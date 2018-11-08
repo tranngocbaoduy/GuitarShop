@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+}
+
+li {
+	float: left;
+}
+
+body {
+	font-family: Open Sans;
+	line-height: 1.5;
+}
+li a {
+	display: block;
+	color: #565F61;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-family: Open Sans; 
+	font-style: bold;
+	font-size:18px;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	color:black;
+}
+
+.qty .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 02px;
+    min-width: 35px;
+    text-align: center;
+}
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: black;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    }
+.qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: black;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    background-clip: padding-box;
+}
+div {
+    text-align: center;
+}
+.minus:hover{
+    background-color: #717fe0 !important;
+}
+.plus:hover{
+    background-color: #717fe0 !important;
+}
+/*Prevent text selection*/
+span{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+input{  
+    border: 0;
+    width: 2%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input:disabled{
+    background-color:white;
+}
+
+.detail {
+	float: none;
+	line-height: 2
+}
+
+.category {
+	width:75%;
+	background-color: black;
+	padding-left: 10px;
+	margin-left: 45px;
+	color: white;
+	margin-top: 40px;
+	}
+
+.section{
+	margin-top:40px;
+	height:460px;width:100%;  
+	text-align: center;
+
+}
+
+.tab-content{
+	padding-top: 20px;
+	list-style-type: none
+}
+
+.is-flex {margin-top: 20px;}
+
+.section h1{
+	margin-top: 20px;
+	line-height: 25px;
+	font-family: Quicksand;
+	text-align: left;
+}
+.section h4{
+	margin-top: 20px;
+	line-height: 25px;
+	font-family: Quicksand;
+}
+.product:hover{
+	-webkit-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);
+	-moz-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);
+	box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);
+}
+.product{
+	height: 360px;
+}
+
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-
+
+    direction: column;
+}
+
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block; 
+    clear: both;
+}
+</style>
+<body>
+	<!-- header -->
+	<div class="container"> 
+		<div class="row">
+		<ul>
+			<li style="float:left;margin-left:100px;margin-top:-5px;"><a style=";font-size:2.5em;color:black; margin-top: 15px" href="index.html">GUITAR FOR YOU</a></li>
+			<li style="margin-left:200px"><a href="home.html">HOME</a></li>
+			<li><a href="product.html">PRODUCT</a></li>
+			<li><a href="#contact">CONTACT</a></li>
+			<li><a class="active" href="#about">LOGIN</a></li>
+			<li ><button href="#contact"style="border-radius: 20px;border-width: 1px;margin-top:11px;padding-left: 15px;padding-right: 15px;font-size: 18px;color: #565F61;" >CART</button></li>
+
+		</ul>
+		<div class="input-group" style="width: 25%;border-radius: 0px;float: right;margin-top:-15px;margin-right: 110px;margin-bottom: 15px">
+				<input type="text" class="form-control" placeholder="Search Your Guitar.." style="background-color: white;color:black">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" style="border-radius: 0px">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</span>
+		</div>
+		</div>
+	</div> 
+	<!-- end header -->
+
+	<!-- navbar-->
+	<nav class="navbar navbar-inverse" style="font-family: Quicksand;">
+ 		<div class="container">
+    		<div class="navbar-header" style="float:left;margin-left:40px;margin-top">
+    			<a class="navbar-brand" href="#">Home/Products/Aucostic Guitar</a>
+    		</div>
+  		</div>
+	</nav>
+	<!-- end navbar -->
+
+	<!-- section 2 -->
+		<div class="container-fluid section" style="font-family: Quicksand">
+			<div class="container">
+			<div class="row">
+					<div class="col-lg-3">
+						<div class="row category">
+							<h1 style="padding-top: 20px;padding-left: 10px"><b>Product</b></h1>
+							<ul style="padding-left: 10px;padding-top: 20px;padding-bottom: 20px">
+								<li>Aucostic Guitar</li><br>
+								<li>Classical Guitar</li><br>
+								<li>Eletric Guitar</li><br>
+								<li>Bass Guitar</li><br>
+								<li>Ukulele</li>
+							</ul>
+						</div>
+
+						<div class="row category">
+							<h1 style="padding-top: 20px;padding-left: 10px"><b>Brands</b></h1>
+							<ul style="padding-left: 10px;padding-top: 20px;padding-bottom: 20px">
+								<li>Charvel</li><br>
+								<li>Cordoba</li><br>
+								<li>EVH</li><br>
+								<li>Fender</li><br>
+								<li>Gretsch</li><br>
+								<li>Ibanez</li><br>
+								<li>Jackson</li><br>
+								<li>Kapok</li><br>
+								<li>Lazer</li><br>
+								<li>Roland</li><br>
+								<li>Samick</li><br>
+								<li>Sigma</li><br>
+								<li>Suzuki</li><br>
+								<li>Takamine</li><br>
+								<li>Tanglewood</li><br>
+								<li>Taylor</li>
+							</ul>
+						</div>
+						<div class="row category">
+							<h1 style="padding-top: 20px;padding-left: 10px"><b>Level</b></h1>
+							<ul style="padding-left: 10px;padding-top: 20px;padding-bottom: 20px">
+								<li>Entry level</li><br>
+								<li>Semi pro</li><br>
+								<li>Pro level</li><br>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="col-lg-9">
+						<div class="row is-flex">
+							<div class="col-lg-3">
+								<img src="../images/line.png" width="100%" alt="" style="margin-top:40px;">
+							</div>
+							<div class="col-lg-6">
+								<h1 style="font-size:37px;text-align: center;font-family: Open Sans;"><b>AUCOSTIC GUITAR</b></h1>
+							</div>
+							<div class="col-lg-3">
+								<img src="../images/line.png" width="110%" alt=""style="margin-top:40px">
+							</div>
+						</div>
+						<!-- product detail -->
+						<div class="row" style="margin-top: 50px">
+							<div class="col-lg-5">
+								<img src="../images/product-1.png" alt="Avatar" style="width:100%">
+							</div>
+
+							<div class="col-lg-7">
+								<ul class="detail">
+									<li><b>Cordoba C1 3/4</b></li><br>
+									<li>Price</li><br>
+									<li>Brand : Cordoba</li><br>
+									<li>Quantity
+										<div class="qty mt-5" style="float: right; margin-left: -70px">
+					                        <span class="minus bg-dark">-</span>
+					                        <input type="number" class="count" name="qty" value="1">
+					                        <span class="plus bg-dark">+</span>
+					                    </div>
+
+									</li><br/>
+									
+									<li><button href="#contact" style="border-radius: 20px;border-width: 1px;margin-top:11px;padding-left: 15px;padding-right: 15px;font-size: 18px;color: #565F61;" >Add to Cart</button></li>
+								</ul>
+							</div>
+						</div>
+						<!-- end product detail -->
+						<script>
+							$(document).ready(function(){
+						    $('.count').prop('disabled', true);
+				   			$(document).on('click','.plus',function(){
+								$('.count').val(parseInt($('.count').val()) + 1 );
+				    		});
+				        	$(document).on('click','.minus',function(){
+				    			$('.count').val(parseInt($('.count').val()) - 1 );
+				    				if ($('.count').val() == 0) {
+										$('.count').val(1);
+									}
+				    	    	});
+				 			});
+						</script>
+						<!-- Tab navigation -->
+						<div class="row fd-product-tabs" style="padding-top: 20px">
+							<ul class="nav nav-tabs">
+		  
+							    <li class="active"><a data-toggle="tab" href="#ptap-detail">Product Detail</a></li>
+					   			<li><a data-toggle="tab" href="#ptap-feedback">Feedback(0)</a></li>
+					    		<li><a data-toggle="tab" href="#ptap-video">Video</a></li>
+							</ul>
+						    <div class="tab-content">
+							    <div id="ptap-detail" class="tab-pane fade in active">
+			   				        <li>Brand Name: Cordoba</li><br/>
+									<li>Type: Acoustic Guitar</li><br/>
+									<li>Suitable For: Beginner, Unisex, Professional Performance, Home-schooling</li><br/>
+									<li>Model Number: AGT16</li><br/>
+									<li>Pickup: none</li><br/>
+									<li>Tone Position: 18</li><br/>
+							    </div>
+							    <div id="ptap-feedback" class="tab-pane fade">
+							      <p>Feeldback here</p>
+							    </div>
+							    <div id="ptap-video" class="tab-pane fade">
+							      <p>Video here</p>
+							    </div>
+							</div>
+						</div>
+						<!-- end tab navigation -->
+
+					</div>
+			</div>
+				
+	<!-- end section 2 -->
+	
+	<!-- section 3 -->
+				<div class="row is-flex">
+					<div class="col-lg-4 col-md-3 col-sm-3 col-xs-0">
+						<img src="../images/line.png" width="100%" alt="" style="margin-top:40px">
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+						<h1 style="font-size:37px;text-align: center;font-family: Open Sans"><b>MORE PRODUCTS</b></h1>
+					</div>
+					<div class="col-lg-4 col-md-3 col-sm-3 col-xs-0">
+						<img src="../images/line.png" width="100%" alt=""style="margin-top:40px">
+					</div>
+				</div>
+
+				<!-- product --> 
+				<div class="row is-flex" style="margin-top: 40px">
+					<div class="col-lg-3 col-md-6 col-sm-6 product">
+						<img src="../images/product-1.png" alt="Avatar" style="width:100%">
+						<h4><b>Cordoba C1 3/4<br>$132.99</b></h4>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 product">
+						<img src="../images/product-2.png" alt="Avatar" style="width:100%">
+						<h4><b>Takamine P5DC<br>$132.99</b></h4>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 product">
+						<img src="../images/product-3.png" alt="Avatar" style="width:100%">
+						<h4><b>Fender Ukulele Hau'oli, Laminated Mahogany<br>$89.99</b></h4>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 product">
+						<img src="../images/product-3.png" alt="Avatar" style="width:100%">
+						<h4><b>Fender Ukulele Hau'oli, Laminated Mahogany<br>$89.99</b></h4>
+					</div>
+				</div>
+				<!-- end product -->
+			
+				<!-- button -->
+				<div class="row is-flex" style="margin-top: 20px;text-align: center">
+					<div class="col-lg-4 col-sm-3 col-xs-3"></div>
+					<div class="col-lg-4 col-sm-6 col-xs-6">
+						 <button type="button" class="btn btn-default" style="color:black;border-radius: 0px;margin-top: 20px;width: 100%">MORE</button>
+					</div>
+					<div class="col-lg-4 col-sm-3 col-xs-3"></div>
+				</div>
+				<div class="clearfix"></div>
+				<!-- end button -->
+			</div>
+	<!-- end section 3 -->
+
+	<!-- footer -->
+			<div class="row is-flex" style="background-color:#565F61;color:white;margin-top:50px;" >
+				<div class="col-lg-6 col-sm-12" style="text-align: left;margin-top: 50px">
+					<p>Contact us via any of the following methods during our business hours<br>Monday - Fridat 8:30 AM - 5:30 PM 	Pacific Time<br>Services@gamingzone.com<br>Phone:1-(626)-854-9338 op. 4</p>
+				</div>
+				<div class="col-lg-6 col-sm-12" style="margin-top:20px;padding-bottom: 30px">
+					<div class="row is-flex">
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+							<ul class="footer">
+								<li style="font-size:20px"><b>Products</b></li><br/><br/>
+								<li>Acoustic Guitar</li><br/>
+								<li>Classical Guitar</li><br/>
+								<li>Electric Guitar</li><br/>
+								<li>Bass Guitar</li><br/>
+								<li>Ukulele</li><br/>
+							</ul>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+							<ul class="footer">
+								<li style="font-size:20px"><b>Brands</b></li><br/><br/>
+								<li>Charvel</li><br/>
+								<li>Cordoba</li><br/>
+								<li>EVH</li><br/>
+								<li>Fender</li><br/>
+								<li>Gretsch</li><br/>
+							</ul>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+							<ul class="footer">
+								<li style="font-size:20px"><b>Contact Us</b></li><br/><br/>
+								<li>Fanpage</li><br/>
+								<li>Twitter</li><br/>
+								<li>Follow us</li><br/>
+								<li>Comunity</li><br/>
+							</ul>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+							<ul class="footer">
+								<li style="font-size:20px"><b>Videos</b></li><br/><br/>
+								<li>Live Stream</li><br/>
+								<li>Video Tutorial</li><br/>
+								<li>All Video</li><br/>
+								<li>Gallery</li><br/>
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+				<p style="margin-top: 20px">© 2018 GUITAR FOR YOU - ALL RIGHTS RESERVED</p>	
+			<div class="clearfix"></div>
+		<!-- end footer -->
+	</div>
+</body>
+</html>
