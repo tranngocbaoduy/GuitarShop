@@ -4,11 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link href="../bootstrap-3.3.7-dist/fonts/quicksand-opensan.css" rel="stylesheet">
+	<script src="../bootstrap-3.3.7-dist/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="home.css" />
+	<link rel="stylesheet" href="product.css" />
 </head>
 <body>
 	<!-- header -->
@@ -25,21 +30,21 @@
 			</div>
 			<div class="collapse navbar-collapse navigation" id="myNavbar">
 				<ul class="nav navbar-nav navigation" id="header">
-						<li><a id="home"href="#myPage">HOME</a></li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">PRODUCT
-							<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Acoustic Guitar</a></li>
-								<li><a href="#">Classical Guitar</a></li>
-								<li><a href="#">Electric Guitar</a></li> 
-								<li><a href="#">Bass Guitar</a></li> 
-								<li><a href="#">Ukulele</a></li> 
-							</ul>
-						</li>
-						<li><a href="#band">CONTACT</a></li>
-						<li><a href="#tour">LOGIN</a></li>
-						<li><a href="#contact"  >CART</a></li>	
+					<li><a id="home"href="home1.html">HOME</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">PRODUCT
+						<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="product.html">Acoustic Guitar</a></li>
+							<li><a href="product.html">Classical Guitar</a></li>
+							<li><a href="product.html">Electric Guitar</a></li> 
+							<li><a href="product.html">Bass Guitar</a></li> 
+							<li><a href="product.html">Ukulele</a></li> 
+						</ul>
+					</li>
+					<li><a href="#band">CONTACT</a></li>
+					<li><a href="#tour">LOGIN</a></li>
+					<li><a href="#contact"  >CART</a></li>	
 				</ul>
 
 
@@ -66,12 +71,13 @@
 		<div class="container-fluid" style="font-family: Quicksand;margin-top:-20px">
 			<div class="row navigation-path">
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"> 
+					<!-- create space for path -->
 				</div>
-	    		<a href="#" style="font-size:15px;color:white;">Home/Products/Aucostic Guitar</a>
+	    		<a href="#">Home/Products/Aucostic Guitar</a>
 	  		</div>
 			<div class="container">
 			<div class="row ">
-					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 navigation-path-category">
 						<div class="row category">
 							<h1><b>Product</b></h1>
 							<ul >
@@ -114,16 +120,17 @@
 						</div>
 					</div>
 					
+					<!-- product right -->
 					<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 						<div class="row is-flex">
 							<div class="col-lg-3 col-md-2 col-sm-1 col-xs-1">
-								<img src="../images/line.png" width="100%" alt="" style="margin-top:40px;">
+								<img src="../images/line.png" class="line-decoration" alt="">
 							</div>
 							<div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
 								<h1 style="font-size:37px;text-align: center;font-family: Open Sans;line-height: 45px"><b>AUCOSTIC GUITAR</b></h1>
 							</div>
 							<div class="col-lg-3 col-md-2 col-sm-1 col-xs-1">
-								<img src="../images/line.png" width="110%" alt=""style="margin-top:40px">
+								<img src="../images/line.png" class="line-decoration" alt="">
 							</div>
 						</div>
 						<!-- product -->
@@ -187,12 +194,12 @@
 
 		<!-- footer -->
 			<div class="row is-flex notsection">
-				<div class="col-lg-6 col-sm-12 footer-left">
+				<div class="col-lg-4 col-md-5 col-sm-12 footer-left">
 					<p>Contact us via any of the following methods during our business hours<br>Monday - Fridat 8:30 AM - 5:30 PM 	Pacific Time<br>Services@gamingzone.com<br>Phone:1-(626)-854-9338 op. 4</p>
 				</div>
-				<div class="col-lg-6 col-sm-12 footer-right" >
+				<div class="col-lg-8 col-md-7 col-sm-12 footer-right" >
 					<div class="row is-flex">
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 							<ul class="footer-navigation">
 								<li><b>Products</b></li><br/><br/>
 								<li><a href="#">Acoustic Guitar</a></li><br/>
@@ -202,7 +209,7 @@
 								<li><a href="#">Ukulele</a></li><br/>
 							</ul>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 							<ul class="footer-navigation">
 								<li><b>Brands</b></li><br/><br/>
 								<li><a href="#">Charvel</a></li><br/>
@@ -212,7 +219,7 @@
 								<li><a href="#">Gretsch</a></li><br/>
 							</ul>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 							<ul class="footer-navigation">
 								<li><b>Contact </b></li><br/><br/>
 								<li><a href="#">Fanpage</a></li><br/>
@@ -221,7 +228,7 @@
 								<li><a href="#">Comunity</a></li><br/>
 							</ul>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 							<ul class="footer-navigation">
 								<li><b>Videos</b></li><br/><br/>
 								<li><a href="#">Live Stream</a></li><br/>
@@ -248,30 +255,19 @@
 			$(".input-group input").val($(window).width());
 			if(parseInt($(window).width()) <=1318){
 				$("#header").addClass("navbar-right");
-				$("my-input").removeClass("navbar-right");
+				$(".my-input").removeClass("navbar-right");
 			}else{
 				$("#header").removeClass("navbar-right");
-			}
-			if(parseInt($(window).width()) <=800){
-				$("my-input").removeClass("navbar-right");
-			}else{
-				$("my-input").addClass("navbar-right");
 			}
 		});
 		$(".input-group input").val($(window).width());
 		if(parseInt($(window).width()) <=1318){
 			$("#header").addClass("navbar-right");
-			$("my-input").removeClass("navbar-right");
+			$(".my-input").removeClass("navbar-right");
 		}else{
 			$("#header").removeClass("navbar-right");
 			
 		}
-		if(parseInt($(window).width()) <=800){
-			$("my-input").removeClass("navbar-right");
-		}else{
-			$("my-input").addClass("navbar-right");
-		}
-		
 		$(".navbar-header button").click(function(){
 			if($("#check-btn").val()==0){
 				$(".input-group").css("margin-top","50px");
