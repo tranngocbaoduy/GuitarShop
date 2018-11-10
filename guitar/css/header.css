@@ -33,6 +33,7 @@ body{
     margin-top:0%;
     margin-bottom: 10px;
     width:40%;
+    margin-right:10px;
   }
 }
 @media (max-width: 1330px) {
@@ -56,6 +57,7 @@ body{
   .input-group{
     width: 90%;
     margin-top:8px;
+
     margin-right:-43px;
   }
 }
@@ -64,6 +66,9 @@ body{
   .input-group{
     margin-top:10px;
     width:85%;
+    color:red;
+    margin-right:-43px;
+
   }
   .list-product{
     margin-top:-30px;
@@ -94,4 +99,9 @@ body{
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.my-input{
+  margin-top:-50px !important;
+  padding-right:20px;
 }

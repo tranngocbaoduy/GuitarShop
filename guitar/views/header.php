@@ -1,4 +1,4 @@
-<input t<input type="text" id="check-btn" style="display:none" value="0">
+<input type="text" id="check-btn" style="display:none" value="0">
 <nav class="navbar navbar-default ">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 <li><a href="#band">CONTACT</a></li>
-                <li><a href="#tour">LOGIN</a></li>
+                <li><a href="login.php">LOGIN</a></li>
                 <li><a href="yourCart.php"  >CART</a></li>
             </ul>
 

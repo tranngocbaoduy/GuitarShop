@@ -36,14 +36,14 @@
     <div class="container" >
 
         <!-- section 2 -->
-        <div class="row is-flex product-first">
-            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">
+        <div class="row is-flex product-first" style="box-sizing: border-box">
+            <div class="col-lg-4 col-md-2 col-sm-2 col-xs-1">
                 <img src="images/common/line.png"  alt="" class="line-decoration">
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
+            <div class="col-lg-4 col-md-8 col-sm-8 col-xs-10">
                 <h1 class="unit"><b>NEW PRODUCT</b></h1>
             </div>
-            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">
+            <div class="col-lg-4 col-md-2 col-sm-2 col-xs-1">
                 <img src="images/common/line.png"  alt="" class="line-decoration">
             </div>
         </div>
@@ -130,7 +130,7 @@
 //            ?>
 <!--        </div>-->
 <!--        <div class="row is-flex" >-->
-<!--            <div class="col-lg-4 col-sm-3 col-xs-3"></div>-->
+<!--            <div class="col-lg-4 col-sm-3 col-xindex.phps-3"></div>-->
 <!--            <div class="col-lg-4 col-sm-6 col-xs-6">-->
 <!--                <button type="button" class="btn btn-default btn-more" >MORE</button>-->
 <!--            </div>-->

@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/indexPage.css" />
     <link rel="stylesheet" href="css/productPage.css" />
+    <link rel="stylesheet" href="css/navigationPath.css" />
+    <link rel="stylesheet" href="css/navigationPathCategory.css" />
     <link rel="stylesheet" href="css/footer.css" />
 </head>
 <body>
