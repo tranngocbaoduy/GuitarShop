@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="boostrap/fonts/quicksand-opensan.css" rel="stylesheet">
-    <script src="boostrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="boostrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <link href="vendor/fonts/quicksand-opensan.css" rel="stylesheet">
+    <script src="vendor/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="vendor/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/indexPage.css" />
-    <link rel="stylesheet" href="css/productPage.css" />
-    <link rel="stylesheet" href="css/navigationPath.css" />
-    <link rel="stylesheet" href="css/navigationPathCategory.css" />
-    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/indexPage.css" />
+    <link rel="stylesheet" href="assets/css/productPage.css" />
+    <link rel="stylesheet" href="assets/css/navigationPath.css" />
+    <link rel="stylesheet" href="assets/css/navigationPathCategory.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
 </head>
 <body>
 <!-- header -->
@@ -37,13 +37,13 @@
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="row is-flex">
                     <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1">
-                        <img src="images/common/line.png" class="line-decoration" alt="">
+                        <img src="assets/images/common/line.png" class="line-decoration" alt="">
                     </div>
                     <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                         <h1 class="unit"><b>AUCOSTIC GUITAR</b></h1>
                     </div>
                     <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1">
-                        <img src="images/common/line.png" class="line-decoration" alt="">
+                        <img src="assets/images/common/line.png" class="line-decoration" alt="">
                     </div>
                 </div>
                 <!-- product -->
@@ -52,7 +52,7 @@
                     for($i = 0;$i<9;$i++){
                         ?>
                             <div class="col-lg-4 col-md-6 col-sm-6 product">
-                                <img src="images/product/product-2.png" alt="Avatar" style="width:100%">
+                                <img src="assets/images/product/product-2.png" alt="Avatar" style="width:100%">
                                 <h4><b>Cordoba C1 3/4<br>$132.99</b></h4>
                             </div>
                         <?php
@@ -88,5 +88,5 @@
 
 </div>
 </body>
-<script src="js/responsivePage.js"></script>
+<script src="assets/js/responsivePage.js"></script>
 </html>

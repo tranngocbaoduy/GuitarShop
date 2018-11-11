@@ -1,20 +1,37 @@
+<?php
+    session_start();
+
+    if(isset($_GET['email']) && isset($_GET['pwd'])){
+        $email = $_GET['email'];
+        $pwd = $_GET['pwd'];
+        $checked = $_GET['remember']; //var get Remember me
+
+        if($email=='user' && $pwd =='1' ){
+            $_SESSION['emailCurrent'] = $email;
+            $_SESSION['pwdCurrent'] = $pwd;
+            header("Location: index.php");
+        }
+
+    }
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="boostrap/fonts/quicksand-opensan.css" rel="stylesheet">
-    <script src="boostrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="boostrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <link href="vendor/fonts/quicksand-opensan.css" rel="stylesheet">
+    <script src="vendor/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="vendor/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/navigationPath.css" />
-    <link rel="stylesheet" href="css/loginPage.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/navigationPath.css" />
+    <link rel="stylesheet" href="assets/css/loginPage.css" />
 
 </head>
 <body>
@@ -39,10 +56,11 @@ require_once ('views/header.php');
             <div class="col-lg-4"></div>
             <div class="col-lg-4 login-input">
                 <div class="row">
-                    <form name="my-login" action="login.php" onsubmit="return validateInput()">
+                    <form name="my-login" onsubmit="return validateInput()" method="GET" >
                         <div class="form-group">
     <!--                        <label for="Name">Name:</label>-->
                             <input  type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+
                         </div>
                         <div class="form-group">
     <!--                        <label for="pwd">Password:</label>-->
@@ -60,14 +78,15 @@ require_once ('views/header.php');
                         <div class="alert alert-warning" style="display: none" id="error-message">
                             <strong>Warning!</strong> Indicates a warning that might need attention.
                         </div>
+                        <p id="error-message" ><?=$checked?></p>
                     </form>
                 </div>
                 <div class="row btn-login-with-social-media">
                     <h4 class="h4-title-login-with-social-media">Login via social media</h4>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <button type="button" class="btn btn-default btn-google">Google</button>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <button type="button" class="btn btn-default btn-facebook">Facebook</button>
                     </div>
 
@@ -88,6 +107,6 @@ require_once ('views/header.php');
 <!-- end footer -->
 </div>
 </body>
-<script src="js/responsivePage.js"></script>
-<script src="js/validateInput.js"></script>
+<script src="assets/js/responsivePage.js"></script>
+<script src="assets/js/validateInput.js"></script>
 </html>	

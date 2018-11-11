@@ -3,18 +3,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="boostrap/fonts/quicksand-opensan.css" rel="stylesheet">
-    <script src="boostrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="boostrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <link href="vendor/fonts/quicksand-opensan.css" rel="stylesheet">
+    <script src="vendor/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="vendor/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/navigationPath.css" />
-    <link rel="stylesheet" href="css/yourCartPage.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/navigationPath.css" />
+    <link rel="stylesheet" href="assets/css/yourCartPage.css" />
 
 </head>
 <body>
@@ -48,34 +48,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img src="images/product/product-1.png" alt="Avatar" style="width:100%"></td>
-                            <td data-th="Product">
-                                <h4 class="nomargin">Cordoba C1 3/4</h4>
-                            </td>
-                            <td data-th="Price" >$149.5</td>
-                            <td data-th="Quantity">
-                                <input type="number" class="form-control text-center" value="1">
-                            </td>
-                            <td data-th="Subtotal" class="text-center">$149.5</td>
-                            <td class="actions" data-th="">
-                                <button class="btn btn-info btn-sm">x<i class="fa fa-refresh"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="images/product/product-1.png" alt="Avatar" style="width:100%"></td>
-                            <td data-th="Product">
-                                <h4 class="nomargin">Cordoba C1 3/4</h4>
-                            </td>
-                            <td data-th="Price" >$149.5</td>
-                            <td data-th="Quantity">
-                                <input type="number" class="form-control text-center" value="1">
-                            </td>
-                            <td data-th="Subtotal" class="text-center">$149.5</td>
-                            <td class="actions" data-th="">
-                                <button class="btn btn-info btn-sm"><i class="fa fa-refresh">x</i></button>
-                            </td>
-                        </tr>
+                        <?php
+                            for($i = 0;$i<4;$i++) {
+                                ?>
+                                <tr>
+                                    <td><img src="assets/images/product/product-1.png" alt="Avatar" style="width:100%"></td>
+                                    <td data-th="Product">
+                                        <h4 class="nomargin">Cordoba C1 3/4</h4>
+                                    </td>
+                                    <td data-th="Price">$149.5 <?=$i?></td>
+                                    <td data-th="Quantity">
+                                        <input type="number" class="form-control text-center" value="1">
+                                    </td>
+                                    <td data-th="Subtotal" class="text-center">$149.5</td>
+                                    <td class="actions" data-th="">
+                                        <button class="btn btn-info btn-delete">x<i class="fa fa-refresh"></i></button>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+
                     </tbody>
                     <tfoot>
                     <tr class="visible-xs">
@@ -83,9 +76,9 @@
                     </tr>
                     <tr>
                         <td style="float: left;"><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                        <td colspan="2" class="hidden-xs"></td>
+                        <td colspan="3" class="hidden-xs"></td>
                         <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-                        <td><a href="#" class="btn btn-success btn-block">Go to Payment<i class="fa fa-angle-right"></i></a></td>
+                        <td><a href="payment.php" class="btn btn-success btn-block">Go to Payment<i class="fa fa-angle-right"></i></a></td>
                     </tr>
                     </tfoot>
                 </table>
@@ -103,6 +96,7 @@
     <!-- end footer -->
 </div>
 </body>
-<script src="js/responsivePage.js"></script>
-<script src="js/increaseDecreaseQuantity.js"></script>
+<script src="assets/js/responsivePage.js"></script>
+<script src="assets/js/yourCartPage.js"></script>
+<script src="assets/js/increaseDecreaseQuantity.js"></script>
 </html>	

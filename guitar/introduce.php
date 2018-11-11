@@ -5,13 +5,13 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="boostrap/fonts/quicksand-opensan.css" rel="stylesheet">
-    <script src="boostrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="boostrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <link href="vendor/fonts/quicksand-opensan.css" rel="stylesheet">
+    <script src="vendor/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="vendor/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="css/introducePage.css" />
-    <link rel="stylesheet" href="css/carousel.css" />
+    <link rel="stylesheet" href="assets/css/introducePage.css" />
+    <link rel="stylesheet" href="assets/css/carousel.css" />
 
 </head>
 <body>
@@ -49,19 +49,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="images/introduce/img-ss3-1.png" alt="Avatar" style="width:100%">
+                    <img src="assets/images/introduce/img-ss3-1.png" alt="Avatar" style="width:100%">
                     <h3><b>Florida Guitar Club</b></h3>
                     <p>The Florida State University Guitar Club is for all skill levels. We discuss music and play together! Beginner, intermediate, and advanced all welcome.</p>
                     <a href="" style="">Read more ...</a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="images/introduce/img-ss3-2.png" alt="Avatar" style="width:100%">
+                    <img src="assets/images/introduce/img-ss3-2.png" alt="Avatar" style="width:100%">
                     <h3><b>C-G-Am and F</b></h3>
                     <p>Another easy song is “Fireflies” by Owl City. The chord progression for “Fireflies” is C-G-Am- and F.</p>
                     <a href="">Read more ...</a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <img src="images/introduce/img-ss3-3.png" alt="Avatar" style="width:100%">
+                    <img src="assets/images/introduce/img-ss3-3.png" alt="Avatar" style="width:100%">
                     <h3><b>Easy Guitar Songs For Beginners</b></h3>
                     <p>Learning guitar can be pretty intimidating for beginners. Many people think of famous guitarist like Jimi Hendrix and Van Halen ... </p>
                     <a href="">Read more ...</a>
@@ -76,13 +76,13 @@
     <div class="row"  section-4>
         <div class="col-lg-1"></div>
         <div class="col-lg-2">
-            <img src="images/introduce/simple-1.png" width="80%" alt="">
+            <img src="assets/images/introduce/simple-1.png" width="80%" alt="">
             <h5>SERVICING MOST GUITAR BRANDS</h5>
             <hr>
-            <img src="images/introduce/simple-2.png" width="80%" alt="">
+            <img src="assets/images/introduce/simple-2.png" width="80%" alt="">
             <h5>25 YEARS OF EXPERIENCE</h5>
             <hr>
-            <img src="images/introduce/simple-3.png" width="80%" alt="">
+            <img src="assets/images/introduce/simple-3.png" width="80%" alt="">
             <h5>HUNDREDS OF MEMBER AROUND THE WORLD</h5>
         </div>
         <div class="col-lg-8" style="text-align:left">
@@ -107,10 +107,10 @@
                 <p>Maecenas ut erat sit amet dui volutpat condimentum ac posuere erat. Fusce ultrices viverra mauris pellentesque luctus. Etiam sed suscipit orci. Cras turpis erat, lacinia et elit vel, rhoncus auctor ex. Ut dignissim lacinia aliquam.</p>
             </div>
             <div class="col-lg-2" style="text-align:center">
-                <img src="images/introduce/simple-4.png" width="80%" alt="">
+                <img src="assets/images/introduce/simple-4.png" width="80%" alt="">
                 <h5>6 MONTHS WARRANTY</h5>
                 <hr>
-                <img src="images/introduce/simple-5.png" width="80%" alt="">
+                <img src="assets/images/introduce/simple-5.png" width="80%" alt="">
                 <h5>FAST & SAFE SHIPPING</h5>
             </div>
             <div class="col-lg-1"></div>
@@ -124,13 +124,13 @@
     <h1 style="font-size:60px;"><b>Our Gallery</b></h1>
     <hr style="color:black;border-width: 2px">
     <div class="" style="float: left;text-align: left">
-        <img src="images/introduce/gallery-1.png" width="65.7%" alt="" style="float: left;" >
+        <img src="assets/images/introduce/gallery-1.png" width="65.7%" alt="" style="float: left;" >
 
-        <img src="images/introduce/gallery-2.png"  width="34%" alt="" >
+        <img src="assets/images/introduce/gallery-2.png" width="34%" alt="" >
 
-        <img src="images/introduce/gallery-3.png" width="31.55%" alt=""style="float: left;">
+        <img src="assets/images/introduce/gallery-3.png" width="31.55%" alt="" style="float: left;">
 
-        <img src="images/introduce/gallery-4.png" width="68.45%" alt="">
+        <img src="assets/images/introduce/gallery-4.png" width="68.45%" alt="">
     </div>
 </div>
 <!-- end section 6 -->
@@ -139,7 +139,7 @@
 <div class="container-fluid section-7">
     <div class="row">
         <div class="col-lg-5">
-            <img width="100%" src="images/introduce/map.png" style="margin-left: -15px">
+            <img width="100%" src="assets/images/introduce/map.png" style="margin-left: -15px">
         </div>
         <div class="col-lg-7" style="color:white;">
             <h1 style="font-size:50px;margin-top:80px"><b>CONTACT US</b></h1>

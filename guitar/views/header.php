@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <input type="text" id="check-btn" style="display:none" value="0">
 <nav class="navbar navbar-default ">
     <div class="container-fluid">
@@ -24,8 +28,24 @@
                     </ul>
                 </li>
                 <li><a href="#band">CONTACT</a></li>
-                <li><a href="login.php">LOGIN</a></li>
-                <li><a href="yourCart.php"  >CART</a></li>
+                <?php
+                    if(isset($_SESSION['emailCurrent']) && isset($_SESSION['pwdCurrent'])){
+                        $email = strtoupper($_SESSION['emailCurrent']);
+                        $pwd= $_SESSION['pwdCurrent'];
+                        ?>
+                        <li><a href="yourCart.php"  >CART</a></li>
+                        <li> <a href="#yourHomePage" style="color:darkred">Hello, <?=$email?></a></li>
+                        <li><a href="logout.php">LOGOUT</a></li>
+                        <?php
+
+                    }else{
+                        ?>
+                        <li><a href="login.php">LOGIN</a></li>
+                        <li><a href="yourCart.php"  >CART</a></li>
+                        <?php
+                    }
+                ?>
+
             </ul>
 
 

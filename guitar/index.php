@@ -3,20 +3,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>My Home Guitar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="boostrap/fonts/quicksand-opensan.css" rel="stylesheet">
-    <script src="boostrap/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="boostrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="boostrap/css/bootstrap.min.css" />
+    <link href="vendor/fonts/quicksand-opensan.css" rel="stylesheet">
+    <script src="vendor/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="vendor/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/carousel.css" />
-    <link rel="stylesheet" href="css/indexPage.css" />
-    <link rel="stylesheet" href="css/productPage.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/carousel.css" />
+    <link rel="stylesheet" href="assets/css/indexPage.css" />
+    <link rel="stylesheet" href="assets/css/productPage.css" />
 
-    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
 
 </head>
 <body>
@@ -38,13 +38,13 @@
         <!-- section 2 -->
         <div class="row is-flex product-first" style="box-sizing: border-box">
             <div class="col-lg-4 col-md-2 col-sm-2 col-xs-1">
-                <img src="images/common/line.png"  alt="" class="line-decoration">
+                <img src="assets/images/common/line.png" alt="" class="line-decoration">
             </div>
             <div class="col-lg-4 col-md-8 col-sm-8 col-xs-10">
                 <h1 class="unit"><b>NEW PRODUCT</b></h1>
             </div>
             <div class="col-lg-4 col-md-2 col-sm-2 col-xs-1">
-                <img src="images/common/line.png"  alt="" class="line-decoration">
+                <img src="assets/images/common/line.png" alt="" class="line-decoration">
             </div>
         </div>
         <div class="row is-flex list-product">
@@ -52,7 +52,7 @@
             for($i = 0;$i<4;$i++){
                 ?>
                 <div class="col-lg-3 col-md-6 col-sm-6 product">
-                    <img src="images/product/product-2.png" alt="Avatar" style="width:100%">
+                    <img src="assets/images/product/product-2.png" alt="Avatar" style="width:100%">
                     <h4><b>Cordoba C1 3/4<br>$132.99</b></h4>
                 </div>
                 <?php
@@ -72,13 +72,13 @@
         <!-- section 3 -->
         <div class="row is-flex">
             <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">
-                <img src="images/common/line.png"  alt="" class="line-decoration">
+                <img src="assets/images/common/line.png" alt="" class="line-decoration">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
                 <h1 class="unit"><b>BEST SELLER</b></h1>
             </div>
             <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">
-                <img src="images/common/line.png"  alt="" class="line-decoration">
+                <img src="assets/images/common/line.png" alt="" class="line-decoration">
             </div>
         </div>
         <div class="row is-flex list-product">
@@ -86,7 +86,7 @@
             for($i = 0;$i<4;$i++){
                 ?>
                 <div class="col-lg-3 col-md-6 col-sm-6 product">
-                    <img src="images/product/product-3.png" alt="Avatar" style="width:100%">
+                    <img src="assets/images/product/product-3.png" alt="Avatar" style="width:100%">
                     <h4><b>Cordoba C1 3/4<br>$132.99</b></h4>
                 </div>
                 <?php
@@ -152,5 +152,5 @@
     <!-- end footer -->
 </div>
 </body>
-<script src="js/responsivePage.js"></script>
+<script src="assets/js/responsivePage.js"></script>
 </html>	
