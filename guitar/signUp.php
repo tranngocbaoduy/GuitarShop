@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,23 +8,23 @@
     <link href="vendor/fonts/quicksand-opensan.css" rel="stylesheet">
     <script src="vendor/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="vendor/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="vendor/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css"/>
 
-    <link rel="stylesheet" href="assets/css/header.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/navigationPath.css" />
-    <link rel="stylesheet" href="assets/css/loginPage.css" />
-    <link rel="stylesheet" href="assets/css/signUpPage.css" />
+    <link rel="stylesheet" href="assets/css/header.css"/>
+    <link rel="stylesheet" href="assets/css/footer.css"/>
+    <link rel="stylesheet" href="assets/css/navigationPath.css"/>
+    <link rel="stylesheet" href="assets/css/loginPage.css"/>
+    <link rel="stylesheet" href="assets/css/signUpPage.css"/>
 </head>
 <body>
 <!--header-->
 <?php
-require_once ('views/header.php');
+require_once('views/header.php');
 ?>
 <!-- end header -->
 <div class="container-fluid" style="font-family: Quicksand;margin-top:-20px">
     <?php
-    require_once ('views/navigationPath.php');
+    require_once('views/navigationPath.php');
     ?>
     <div class="container">
         <div class="row is-flex">
@@ -41,24 +40,28 @@ require_once ('views/header.php');
                 <div class="row">
                     <form name="my-login" action="login.php" onsubmit="return validateInput()">
                         <div class="form-group">
-    <!--                        <label for="Name">Name:</label>-->
-                            <input  type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                            <!--                        <label for="Name">Name:</label>-->
+                            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
                         </div>
                         <div class="form-group">
-    <!--                        <label for="pwd">Password:</label>-->
-                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                            <!--                        <label for="pwd">Password:</label>-->
+                            <input type="password" class="form-control" id="pwd" placeholder="Enter password"
+                                   name="pwd">
                         </div>
                         <div class="form-group">
                             <!--                        <label for="pwd">Re Password:</label>-->
-                            <input type="password" class="form-control" id="re-pwd" placeholder="Enter Re-password" name="re-pwd">
+                            <input type="password" class="form-control" id="re-pwd" placeholder="Enter Re-password"
+                                   name="re-pwd">
                         </div>
                         <div class="form-group">
                             <!--                        <label for="pwd">Password:</label>-->
-                            <input class="check-box-accept" type="checkbox" name="remember" > I accept the Terms and Condition
+                            <input class="check-box-accept" type="checkbox" name="remember"> I accept the Terms and
+                            Condition
                         </div>
                         <div class="form-group">
                             <!--                        <label for="pwd">Password:</label>-->
-                            <input class="check-box-receive-email" type="checkbox" name="remember" > I agree to receive email & phone communications
+                            <input class="check-box-receive-email" type="checkbox" name="remember"> I agree to receive
+                            email & phone communications
                         </div>
                         <p id="message" style="color:red;display: none"></p>
                         <button type="submit" class="btn btn-default btn-submit">Register</button>
@@ -81,16 +84,15 @@ require_once ('views/header.php');
             <div class="col-lg-4"></div>
         </div>
     </div>
-</div>
 
-<!-- footer -->
-<div class="row is-flex notsection">
-    <?php
-    require_once ('views/footer.php');
-    ?>
-</div>
-<p class="store-year">© 2018 GUITAR FOR YOU - ALL RIGHTS RESERVED</p>
-<!-- end footer -->
+    <!-- footer -->
+    <div class="row is-flex notsection">
+        <?php
+        require_once('views/footer.php');
+        ?>
+    </div>
+    <p class="store-year">© 2018 GUITAR FOR YOU - ALL RIGHTS RESERVED</p>
+    <!-- end footer -->
 </div>
 </body>
 <script src="assets/js/responsivePage.js"></script>

@@ -36,7 +36,7 @@
     <div class="container" >
 
         <!-- section 2 -->
-        <div class="row is-flex product-first" style="box-sizing: border-box">
+        <div class="row is-flex product-first"  style="box-sizing: border-box">
             <div class="col-lg-4 col-md-2 col-sm-2 col-xs-1">
                 <img src="assets/images/common/line.png" alt="" class="line-decoration">
             </div>
@@ -47,22 +47,13 @@
                 <img src="assets/images/common/line.png" alt="" class="line-decoration">
             </div>
         </div>
-        <div class="row is-flex list-product">
-            <?php
-            for($i = 0;$i<4;$i++){
-                ?>
-                <div class="col-lg-3 col-md-6 col-sm-6 product">
-                    <img src="assets/images/product/product-2.png" alt="Avatar" style="width:100%">
-                    <h4><b>Cordoba C1 3/4<br>$132.99</b></h4>
-                </div>
-                <?php
-            }
-            ?>
+        <div class="row is-flex list-product" id="new-product">
+
         </div>
-        <div class="row is-flex" style="margin-top: 20px;text-align: center">
+        <div class="row is-flex" style="margin-top: 20px;text-align: center" >
             <div class="col-lg-4 col-sm-3 col-xs-3"></div>
             <div class="col-lg-4 col-sm-6 col-xs-6">
-                <button type="button" class="btn btn-default btn-more">MORE</button>
+                <button type="button" class="btn btn-default btn-more" id="btn-more-1">MORE</button>
             </div>
             <div class="col-lg-4 col-sm-3 col-xs-3"></div>
         </div>
@@ -82,60 +73,7 @@
             </div>
         </div>
         <div class="row is-flex list-product">
-            <?php
-            for($i = 0;$i<4;$i++){
-                ?>
-                <div class="col-lg-3 col-md-6 col-sm-6 product">
-                    <img src="assets/images/product/product-3.png" alt="Avatar" style="width:100%">
-                    <h4><b>Cordoba C1 3/4<br>$132.99</b></h4>
-                </div>
-                <?php
-            }
-            ?>
         </div>
-        <div class="row is-flex" style="margin-top: 20px;text-align: center">
-            <div class="col-lg-4 col-sm-3 col-xs-3"></div>
-            <div class="col-lg-4 col-sm-6 col-xs-6">
-                <button type="button" class="btn btn-default btn-more">MORE</button>
-            </div>
-            <div class="col-lg-4 col-sm-3 col-xs-3"></div>
-        </div>
-        <div class="clearfix"></div>
-
-        <!-- end section 3 -->
-
-        <!-- section 4 -->
-<!--        <div class="row is-flex">-->
-<!--            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">-->
-<!--                <img src="images/common/line.png"  alt="" class="line-decoration">-->
-<!--            </div>-->
-<!--            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">-->
-<!--                <h1 class="unit"><b>SELL OFF</b></h1>-->
-<!--            </div>-->
-<!--            <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">-->
-<!--                <img src="images/common/line.png"  alt="" class="line-decoration">-->
-<!--            </div>-->
-<!--        </div>-->
-<!---->
-<!--        <div class="row is-flex list-product">-->
-<!--            --><?php
-//            for($i = 0;$i<4;$i++){
-//                ?>
-<!--                <div class="col-lg-3 col-md-6 col-sm-6 product">-->
-<!--                    <img src="images/product/product-1.png" alt="Avatar" style="width:100%">-->
-<!--                    <h4><b>Cordoba C1 3/4<br>$132.99</b></h4>-->
-<!--                </div>-->
-<!--                --><?php
-//            }
-//            ?>
-<!--        </div>-->
-<!--        <div class="row is-flex" >-->
-<!--            <div class="col-lg-4 col-sm-3 col-xindex.phps-3"></div>-->
-<!--            <div class="col-lg-4 col-sm-6 col-xs-6">-->
-<!--                <button type="button" class="btn btn-default btn-more" >MORE</button>-->
-<!--            </div>-->
-<!--            <div class="col-lg-4 col-sm-3 col-xs-3"></div>-->
-<!--        </div>-->
         <div class="clearfix"></div>
 
         <!-- end section 4 -->
@@ -153,4 +91,6 @@
 </div>
 </body>
 <script src="assets/js/responsivePage.js"></script>
+<script src="assets/js/indexPage.js"></script>
+
 </html>	

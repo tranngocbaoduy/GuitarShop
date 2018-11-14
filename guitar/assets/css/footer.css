@@ -25,10 +25,11 @@
 	padding-left:50px;
 }
 .notsection{
-	text-align:left;
-	background-color:#565F61;
-	color:white;
-	margin-top:20px;
+    text-align:left;
+    background-color:#565F61;
+    color:white;
+    box-sizing: border-box;
+    margin-top:20px;
 }
 .store-year{
 	margin-top: 10px;

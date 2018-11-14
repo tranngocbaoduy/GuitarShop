@@ -1,8 +1,8 @@
 
 $(document).ready(function () {
     $(".btn-delete").on("click",function(e){
-        var k = confirm("Do you want to delete it?");
-        if(k){
+        var message = confirm("Do you want to delete it?");
+        if(message){
            $(this).parent().parent().remove();
         }
     });
