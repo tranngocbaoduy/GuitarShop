@@ -1,21 +1,8 @@
 <?php
     session_start();
 ?>
-<script>
-    $.ajax({
-        type: 'GET',
-        url: 'HomeController.php',
-        data: "text",
-        success: function (data) {
-            $("#header").append( data);
-        },
-        error: function(data){
-            alert("Loi ch trinh" );
-        }
-    });
-
-</script>
-<input type="text" id="check-btn" style="display:none" value="0">
+<script src="assets/js/header.js"> </script>
+<input type="hidden" id="check-btn" style="display:none" value="0">
 <nav class="navbar navbar-default ">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -33,11 +20,11 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">PRODUCT
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="product.php">Acoustic Guitar</a></li>
-                        <li><a href="product.php">Classical Guitar</a></li>
-                        <li><a href="product.php">Electric Guitar</a></li>
-                        <li><a href="product.php">Bass Guitar</a></li>
-                        <li><a href="product.php">Ukulele</a></li>
+<!--                        <li><a href="product.php">Acoustic Guitar</a></li>-->
+<!--                        <li><a href="product.php">Classical Guitar</a></li>-->
+<!--                        <li><a href="product.php">Electric Guitar</a></li>-->
+<!--                        <li><a href="product.php">Bass Guitar</a></li>-->
+<!--                        <li><a href="product.php">Ukulele</a></li>-->
                     </ul>
                 </li>
                 <li><a href="contact.php">CONTACT</a></li>

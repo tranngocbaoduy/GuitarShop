@@ -1,4 +1,4 @@
-var quantiyFirst = 4;
+let quantiyFirst = 4;
 
 function loadProductByQuantity(number) {
     $.ajax({
@@ -30,10 +30,11 @@ function loadProductByQuantity(number) {
             });
 
 
+
             $('#new-product').html(html);
         },
         error: function () {
-            alert('that bai');
+            alert('Không thể load dữ liệu');
         }
 
     });
@@ -44,4 +45,4 @@ $('#btn-more-1').on("click",function() {
 });
 
 // load khi vao trang index
-$('#new-product').html(loadProductByQuantity(quantiyFirst));
+loadProductByQuantity(quantiyFirst);

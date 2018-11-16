@@ -17,8 +17,13 @@
     <link rel="stylesheet" href="assets/css/navigationPath.css" />
     <link rel="stylesheet" href="assets/css/navigationPathCategory.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+
+
+
 </head>
 <body>
+
+<script src="assets/js/productPage.js"></script>
 <!-- header -->
 <?php
     require_once ('views/header.php');
@@ -49,17 +54,8 @@
                     </div>
                 </div>
                 <!-- product -->
-                <div class="row is-flex">
-                    <?php
-                    for($i = 0;$i<9;$i++){
-                        ?>
-                            <div class="col-lg-4 col-md-6 col-sm-6 product">
-                                <img src="assets/images/product/product-2.png" alt="Avatar" style="width:100%">
-                                <h4><b>Cordoba C1 3/4<br>$132.99</b></h4>
-                            </div>
-                        <?php
-                    }
-                    ?>
+                <div class="row is-flex" id="list-product-by-cate">
+
                 </div>
                 <!-- end product 3 -->
 

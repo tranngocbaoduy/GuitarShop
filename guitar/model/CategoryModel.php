@@ -1,11 +1,11 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/config/DataBaseConfig.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/entities/Account.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/entities/Category.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/entities/Response.php');
 
 
-class AccountModel{
+class CategoryModel{
 
     public $db;
 
@@ -14,34 +14,10 @@ class AccountModel{
         $this->db = DataBaseConfig::getInstance();
     }
 
-    function login($username, $password) {
-        $encrypted = md5($password);
-        $response = new Response();
-        try{
-            $sql = "SELECT * FROM ACCOUNT WHERE USERNAME='$username' && PASSWORD='$encrypted'";
-            $param = Array();
-
-            $result = $this->db->get($sql, $param);
-            if ($result == Response::$FAILED){
-                $response->status = Response::$FAILED;
-                $response->message = "Truy vấn thông tin không thành công";
-            }else{
-                $response->status = Response::$SUCCESS;
-                $response->message = "Truy vấn thành công";
-                $response->data = $result[0];
-            }
-        }catch (Exception $e){
-            $response->status = Response::$ERROR;
-            $response->message = $e->getMessage();
-        }
-
-        return $response;
-    }
-
     public function getAll(){
         $response = new Response();
         try{
-            $sql = "select * from ACCOUNT";
+            $sql = "select * from CATEGORY";
             $param = array();
 
             $result = $this->db->get($sql, $param);
@@ -64,7 +40,7 @@ class AccountModel{
     }
 
 
-    public function getAccountById($id){
+    public function getCategoryById($id){
 
         $response = new Response();
         try{

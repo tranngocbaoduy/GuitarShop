@@ -1,12 +1,12 @@
 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 navigation-path-category">
     <div class=" category">
         <h1><b>Product</b></h1>
-        <ul >
-            <li>Aucostic Guitar</li>
-            <li>Classical Guitar</li>
-            <li>Eletric Guitar</li>
-            <li>Bass Guitar</li>
-            <li>Ukulele</li>
+        <ul class="list-category">
+<!--            <li>Aucostic Guitar</li>-->
+<!--            <li>Classical Guitar</li>-->
+<!--            <li>Eletric Guitar</li>-->
+<!--            <li>Bass Guitar</li>-->
+<!--            <li>Ukulele</li>-->
         </ul>
     </div>
     <div class=" category">

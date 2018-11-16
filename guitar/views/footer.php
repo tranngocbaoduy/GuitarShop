@@ -4,13 +4,13 @@
 <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 footer-right" >
     <div class="row is-flex">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-5">
-            <ul class="footer-navigation">
+            <ul class="footer-navigation list-category-footer">
                 <li><b>Products</b></li><br/><br/>
-                <li><a href="../product.php">Acoustic Guitar</a></li><br/>
-                <li><a href="../product.php">Classical Guitar</a></li><br/>
-                <li><a href="../product.php">Electric Guitar</a></li><br/>
-                <li><a href="../product.php">Bass Guitar</a></li><br/>
-                <li><a href="../index.php">Ukulele</a></li><br/>
+<!--                <li><a href="../product.php">Acoustic Guitar</a></li><br/>-->
+<!--                <li><a href="../product.php">Classical Guitar</a></li><br/>-->
+<!--                <li><a href="../product.php">Electric Guitar</a></li><br/>-->
+<!--                <li><a href="../product.php">Bass Guitar</a></li><br/>-->
+<!--                <li><a href="../index.php">Ukulele</a></li><br/>-->
             </ul>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">

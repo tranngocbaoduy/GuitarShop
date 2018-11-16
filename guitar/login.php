@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['usernameCurrent']) && isset($_SESSION['passwordCurrent'])) {
+    header("Location: index.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,11 +52,11 @@ require_once('views/header.php');
                     <form id="login-form" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" id="username" placeholder="Enter user"
-                                   name="username" value="123">
+                                   name="username" value="">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" placeholder="Enter password"
-                                   name="password" value="123">
+                                   name="password" value="">
                         </div>
                         <div class="form-group">
                             <input class="check-box" type="checkbox" name="remember"> Remember me

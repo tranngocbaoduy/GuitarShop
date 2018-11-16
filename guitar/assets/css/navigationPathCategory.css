@@ -24,3 +24,7 @@
         display:none;
     }
 }
+
+.list-category li a{
+    color:white;
+}

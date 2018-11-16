@@ -1,13 +1,14 @@
 <?php
-    class Account{
-            public $username = null;
-            public $password = null;
+class Account{
+    public $username;
+    public $name;
+    public $password;
 
-            public function __construct($data = array())
-            {
-                if (isset($data['username'])) $this->username = stripslashes(strip_tags($data['username']));
-                if (isset($data['password'])) $this->password = stripslashes(strip_tags($data['password']));
-            }
-
+    public function __construct($username, $name, $password)
+    {
+        $this->username = $username;
+        $this->name = $name;
+        $this->password = $password;
     }
+}
 ?>

@@ -19,24 +19,24 @@ $('#login-form').submit(function() {
         return false;
     }
     $.ajax({
-        type: 'POST',
-        url: 'AccountController.php',
+        type: 'post',
+        url: 'controller/AccountController.php',
+        dataType: 'text',
         data: {
             username: $("#username").val(),
             password: $("#password").val(),
             action: "login"
         },
         success: function (data) {
-            if (data === 'Login') {
+            if (data =='1') {
+                alert('Đăng nhập thành công');
                 window.location.replace('index.php');
-                alert('Dang nhap thanh cong');
-            }
-            else {
-                alert("-----"+data+"-----");
+            }else {
+                alert('Đăng nhập thất bại');
             }
         },
         error: function(data){
-            alert("Loi ch trinh" );
+            alert("Không thể load dữ liệu");
         }
     });
     return false;
