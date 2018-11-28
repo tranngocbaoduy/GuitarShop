@@ -1,0 +1,23 @@
+
+.navigation-path ul{
+    list-style-type: none;
+}
+.navigation-path ul li{
+    float:left;
+    color:white;
+    display:block;
+}
+.navigation-path ul span{
+    float:left;
+    color:white;
+}
+.navigation-path ul li a{
+    font-size:15px;
+    float:left;
+    width:100%;
+    color:white;
+}
+.navigation-path .line{
+    margin-left:3px;
+    margin-right:-1px;
+}

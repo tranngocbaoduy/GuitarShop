@@ -1,0 +1,16 @@
+
+.product:hover{
+	-webkit-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);
+	-moz-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);
+	box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);
+}
+.product{
+	 margin-top: 10px;
+ }
+.product h4{
+	text-align: center;
+}
+.line-decoration{
+	margin-top:40px;
+    width:100%;
+}
