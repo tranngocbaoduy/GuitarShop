@@ -20,18 +20,20 @@ class FileController extends Controller
 
     public function doUpload(Request $request){
         //xử lý upload ở đây
+        $currentTime= time();
         if($request->hasfile('image-product'))
         {
-            $folderdirection = 'uploads/';
+            $folderDirection = 'admin/uploads/';
             $file = $request->file('image-product');
             $filename = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename =time().'_'.$filename;
-            $file->move($folderdirection, $filename);
+            $filename =$currentTime.'_'.$filename;
+            $file->move($folderDirection, $filename);
 
             $msg = array(
                 'status' => true,
-                'message' => 'Upload File Success'
+                'message' => 'Upload File Success',
+                'currentTimeCreated' => $currentTime,
             );
             return response()->json($msg);
         }

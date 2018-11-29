@@ -114,45 +114,12 @@ $(document).ready(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        var data = {
-            _token:token,
-            nameProduct:name,
-            priceProduct:price,
-            descriptionProduct:des,
-            imageProduct:image,
-            quantityProduct:quantity,
-            cateProduct:cate
-        };
+
         // Ajax Post
 
             // var formData = $(this).serialize();
 
-            var formData = new FormData($("#my-form-upload")[0]);
-
-
-        $.ajax({
-            type: "post",
-            url: "/admin/createProduct",
-            data: data,
-            cache: false,
-            success: function (data)
-            {
-                console.log('login request sent !');
-                console.log('message: ' + data.message);
-
-                if(data.status) {
-
-                }else{
-                    $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">"+data.message+"</p></td>");
-                    $('#name-product').focus();
-                }
-            },
-            error: function (data){
-                alert('Fail to run create..');
-                console.log(data);
-            }
-        });
-
+        var formData = new FormData($("#my-form-upload")[0]);
         $.ajax({
             type: "post",
             url: "/file",
@@ -162,14 +129,50 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             success: function (data) {
-                console.log('login request sent !');
+                console.log('request sent !');
                 console.log('message: ' + data.message);
 
+
+
                 if (data.status) {
+
+                    var dataProduct = {
+                        _token:token,
+                        nameProduct:name,
+                        priceProduct:price,
+                        descriptionProduct:des,
+                        imageProduct:image,
+                        quantityProduct:quantity,
+                        cateProduct:cate,
+                        currentTimeCreated: data['currentTimeCreated']
+                    };
+
                     $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">" + data.message + "</p></td>");
                     $('.message-error').focus();
 
-                    // window.location.assign('/viewAllProduct');
+                    $.ajax({
+                        type: "post",
+                        url: "/admin/createProduct",
+                        data: dataProduct,
+                        cache: false,
+                        success: function (response)
+                        {
+                            console.log('request sent !');
+                            console.log('message: ' + response.message);
+
+                            if(response.status) {
+                                // window.location.assign('/admin/viewAllProduct');
+                            }else{
+                                $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">"+data.message+"</p></td>");
+                                $('#name-product').focus();
+                            }
+                        },
+                        error: function (response){
+                            alert('Fail to run create..');
+                            console.log(response);
+                        }
+                    });
+                    // window.location.assign('/admin/viewAllProduct');
                 } else {
                     $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">" + data.message + "</p></td>");
                     $('#name-product').focus();
@@ -183,6 +186,10 @@ $(document).ready(function() {
                 return false;
             },
         });
+
+
+
+
         return false;
     });
 

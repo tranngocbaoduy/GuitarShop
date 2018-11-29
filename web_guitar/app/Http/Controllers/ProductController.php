@@ -31,9 +31,7 @@ class ProductController extends Controller
         if (count($product) != 1) {
             return view('error/404');
         }
-
-
-        return view('/admin/detailProduct', ['product' => $product[0]],['defineUserOrProduct'=>1]);
+        return view('/admin/detailProduct', ['product' => $product[0]]);
     }
 
     public function getProductByCategory(Request $request)
@@ -73,25 +71,34 @@ class ProductController extends Controller
 
     public function createNewProduct(Request $request)
     {
-        $currentTime = time();
+        $currentTime = $request->currentTimeCreated;
         $nameProduct = $request->nameProduct;
         $priceProduct = $request->priceProduct;
         $descriptionProduct = $request->descriptionProduct;
         $imageProduct =$currentTime.'_'.$request->imageProduct;
-        $path = "<img src="."/uploads/".$imageProduct." alt=\"Avatar\" style=\"width:30%\">";
+        $path = "<img src="."/admin/uploads/".$imageProduct." alt=\"Avatar\" style=\"width:30%\">";
         $quantityProduct = $request->quantityProduct;
         $categoryProduct = $request->cateProduct;
 
-        if($request->hasfile('filesTest'))
-        {
-            $folderdirection = 'uploads/';
-            $file = $request->file('filesTest');
-            $filename = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename =$currentTime.'_'.$filename;
-            $file->move($folderdirection, $filename);
-//            echo "<img src='".$folderdirection.$filename."'>";
-        }
+
+//        create image in FileController
+
+//        if($request->hasfile('image-product'))
+//        {
+//            $folderdirection = 'uploads/';
+//            $file = $request->file('image-product');
+//            $filename = $file->getClientOriginalName();
+//            $extension = $file->getClientOriginalExtension(); // getting image extension
+//            $filename =$currentTime.'_'.$filename;
+//            $file->move($folderdirection, $filename);
+////            echo "<img src='".$folderdirection.$filename."'>";
+//        }else{
+//            $msg = array(
+//                'status' => false,
+//                'message' => 'Upload Image Failed'
+//            );
+//            return response()->json($msg);
+//        }
 
         #check product exist
         $exist = Product::where('name', $nameProduct)->get();
@@ -115,7 +122,7 @@ class ProductController extends Controller
 
         $product->save();
         // create button edit
-        $product->action =  "<a class=\"btn btn-warning edit-product\" href=\"/adjust-product-id=".$product->id."\">Edit</a>";
+        $product->action =  "<a class=\"btn btn-warning edit-product\" href=\"/admin/adjust-product-id=".$product->id."\">Edit</a>";
 
         $product->save();
 

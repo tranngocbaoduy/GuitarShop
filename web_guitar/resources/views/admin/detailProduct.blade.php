@@ -54,7 +54,7 @@
                                         <tr>
                                             <td></td>
                                             <td><a href="/update-product-id={{$product->id}}" onclick="return confirm('Update product !!!')" class="btn btn-success">Accept</a>
-                                                <a href="/viewAllProduct" class="btn btn-info btn-warning">Back</a>
+                                                <a href="/admin/viewAllProduct" class="btn btn-info btn-warning">Back</a>
                                                 <a href="/remove-product-id={{$product->id}}"
                                                    onclick="return confirm('Delete product !!!')"
                                                    class="btn btn-danger">Delete </a></td>

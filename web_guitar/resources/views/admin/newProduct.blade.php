@@ -65,7 +65,7 @@
                                             <td></td>
                                             <td>
                                                 <button id="create-new-product" class="btn btn-success">Accept</button>
-                                                <a href="/login" class="btn btn-info btn-warning">Back</a>
+                                                <a href="/admin/viewAllProduct" class="btn btn-info btn-warning">Back</a>
                                             </td>
                                         </tr>
                                 </table>
