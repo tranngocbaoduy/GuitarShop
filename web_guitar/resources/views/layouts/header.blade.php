@@ -13,15 +13,17 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ url('js/jquery-3.3.1.min.js') }}" ></script>
     <script src="{{ url('js/bootstrap.js') }}" ></script>
-    <link rel="stylesheet" href="{{url('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{url('css/bootstrap-theme.css')}}">
+
 
     <script src="{{url('asset/js/responsivePage.js')}}"></script>
+
     <!-- Fonts -->
-    {{--<link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
     <link rel="stylesheet" href="{{url('asset/fonts/quicksand-opensan.css')}}">
-<!-- Styles -->
-    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{url('css/bootstrap.css')}}">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url('css/bootstrap-theme.css')}}">
 </head>
 <body>
 <div id="header">
@@ -74,13 +76,14 @@
             </div>
         </div>
     </nav>
-
-    <main class="mt-0">
-        @yield('content')
-    </main>
-    <div class="clearfix"></div>
-    @extends('layouts.footer')
-    {{--@stack('scripts')--}}
 </div>
+@yield('carousel')
+@yield('navigation_path')
+<main class="container" >
+    @yield('navigation_left')
+    @yield('content')
+</main>
+@yield('footer')
+
 </body>
 </html>

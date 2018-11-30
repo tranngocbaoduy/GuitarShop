@@ -14,6 +14,8 @@
 
 Auth::routes();
 
+Route::get('/getAllProductByLaratable','ProductController@getAllProductByLaratable');
+
 Route::get('/getAllProduct','ProductController@getAllProduct');
 
 Route::get('/admin/viewAllProduct',function (){
@@ -27,13 +29,8 @@ Route::get('/admin/viewAllUser',function (){
 });
 
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', 'ProductController@getAllProduct');
+Route::get('/', 'ProductController@getAllProduct');
 
 Route::get('/admin', function () {
     return view('auth/login');
@@ -59,6 +56,11 @@ Route::post('/admin/createProduct','ProductController@createNewProduct');
 //
 //
 Route::get('/getAllCategory','CategoryController@getAllCategory');
+Route::get('/getCategoryByIdAjax','CategoryController@getCategoryByIdAjax');
+
+
+Route::get('/detail-product-id={id}','ProductController@getProductById');
+Route::get('/getProductByIdAjax','ProductController@getProductByIdAjax');
 //
 //
 
@@ -69,12 +71,13 @@ Route::post('file','Filecontroller@doUpload')->name('uploadFile');
 
 
 Route::get('/admin/update-product-id={id}','ProductController@updateProductById');
-Route::get('/admin/adjust-product-id={id}','ProductController@getProductById');
+Route::get('/admin/adjust-product-id={id}','ProductController@getProductByIdToAjust');
 Route::get('/admin/remove-product-id={id}','ProductController@removeProductById');
 
 //Route::post('/createProduct','ProductController@createNewProduct');
 //
-//Route::get('/getProductByCategory','ProductController@getProductByCategory');
+Route::get('/getProductByIdCategory={id}','ProductController@getProductByCategory');
+
 //
 //Route::get('/new-product',function(){
 //    return view('/pages/detailProduct');

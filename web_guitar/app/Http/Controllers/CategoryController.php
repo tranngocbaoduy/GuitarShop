@@ -22,4 +22,24 @@ class CategoryController extends Controller
         );
         return response()->json($msg);
     }
+
+
+    public function getCategoryByIdAjax(Request $request)
+    {
+        $categories = Category::where('id', $request->id)->get();
+        if (count($categories) != 1) {
+            $msg = array(
+                'status' => false,
+                'message' =>  'Get Category By Id Failed',
+
+            );
+            return response()->json($msg);
+        }
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Category By Id Success',
+            'category' => $categories[0]
+        );
+        return response()->json($msg);
+    }
 }

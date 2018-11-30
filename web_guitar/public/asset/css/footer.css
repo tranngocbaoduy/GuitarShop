@@ -1,8 +1,13 @@
 
 
 /*footer*/
-#footer{
-    background-color: #0fa19f;
+#footer {
+    background-color: #565F61;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    display: block;
+    bottom:0;
+    width:100%;
 }
 .footer-navigation li:first-child{
 	font-size:18px;

@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     //
 
-    public function getAllProduct(){
+    public function getAllProductByLaratable(){
 
        return Laratables::recordsOf(Product::class);
     }
@@ -23,11 +23,47 @@ class ProductController extends Controller
         return Laratables::recordsOf(Product::class);
     }
 
-
-    public function getProductById($id)
+    public function getAllProduct()
     {
+        $products = Product::all();
+        if (count($products) <= 0) {
+            return view('error/404');
+        }
+        return view('/home', ['products' => $products]);
+    }
 
-        $product = Product::where('id', $id)->get();
+    public function getProductById(Request $request)
+    {
+        $product = Product::where('id', $request->id)->get();
+        if (count($product) != 1) {
+            return view('error/404');
+        }
+        return view('/user/productDetailPage', ['product' => $product[0]]);
+    }
+
+    public function getProductByIdAjax(Request $request)
+    {
+        $products = Product::where('id', $request->id)->get();
+        if (count($products) != 1) {
+            $msg = array(
+                'status' => false,
+                'message' =>  'Get Product By Category Failed',
+
+            );
+            return response()->json($msg);
+        }
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Product By Category Success',
+            'info'=> $request->id,
+            'product' => $products[0]
+        );
+        return response()->json($msg);
+    }
+
+    public function getProductByIdToAjust(Request $request)
+    {
+        $product = Product::where('id', $request->id)->get();
         if (count($product) != 1) {
             return view('error/404');
         }
@@ -36,11 +72,17 @@ class ProductController extends Controller
 
     public function getProductByCategory(Request $request)
     {
-        $idCate = $request->select;
+        $idCate = $request->id;
         if($idCate !=0) {
             $products = Product::where('id_category', $idCate)->get();
         }else{
             $products = Product::all();
+            $msg = array(
+                'status' => true,
+                'message' => 'Get Product By Category Success',
+                'products' => $products
+            );
+            return response()->json($msg);
         }
         if (count($products) < 0) {
             $msg = array(
@@ -49,13 +91,8 @@ class ProductController extends Controller
             );
             return view('error/404');
         }
-        $msg = array(
-            'status' => true,
-            'message' => 'Get Product By Category Success',
-            'products' => $products
-        );
+        return view('/user/product', ['products' => $products]);
 //
-        return response()->json($msg);
     }
 
     public function removeProductById($id)

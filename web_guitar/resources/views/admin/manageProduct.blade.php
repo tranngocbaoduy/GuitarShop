@@ -51,7 +51,7 @@
                 serverSide: true,
                 processing: true,
                 responsive: true,
-                ajax: "/getAllProduct",
+                ajax: "/getAllProductByLaratable",
                 columns: [
                     {name: 'id'},
                     {name: 'name'},
