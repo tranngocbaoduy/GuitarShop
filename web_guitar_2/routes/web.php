@@ -50,10 +50,6 @@ Route::get('/admin/new-product',function(){
     return view('/admin/newProduct');
 });
 
-Route::get('/yourCart',function(){
-    return view('/user/yourCartPage');
-});
-
 Route::post('/admin/createUser','UserController@createNewUser');
 Route::post('/admin/createProduct','ProductController@createNewProduct');
 //

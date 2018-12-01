@@ -50,7 +50,7 @@ $(document).ready(function(){
                 '                            <br/>\n' +
                 '\n' +
                 '                            <li>\n' +
-                '                                <button id="add-to-cart" class="btn-add-to-cart">Add to Cart</button>\n' +
+                '                                <button href="#contact" class="btn-add-to-cart">Add to Cart</button>\n' +
                 '                            </li>\n' +
                 '                        </ul>\n' +
                 '                    </div>';
@@ -79,24 +79,6 @@ $(document).ready(function(){
                 error: function(data){
                     alert("Không thể load dữ liệu" );
                 }
-            });
-
-            $("#add-to-cart").on('click',function () {
-                let yourCartJsonString = '';
-                let yourCart = [];
-                let check = sessionStorage.getItem("cart");
-                if(check == null){
-                    sessionStorage.setItem("cart","");
-                }else{
-                    yourCartJsonString = sessionStorage.getItem("cart");
-                    yourCart = JSON.parse(yourCartJsonString);
-                }
-                yourCart.push(result['product']['id']);
-                console.log(yourCart);
-                yourCartJsonString = JSON.stringify(yourCart);
-                sessionStorage.setItem("cart", yourCartJsonString);
-
-                window.location.assign("/yourCart");
             });
         },
         error: function(data){
