@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/getAllProductByLaratable','ProductController@getAllProductByLaratable');
 
 Route::get('/getAllProduct','ProductController@getAllProduct');
-
+Route::get('/getProductByGroupIdAjax','ProductController@getProductByGroupIdAjax');
 Route::get('/admin/viewAllProduct',function (){
     return view('admin/manageProduct');
 });
@@ -41,6 +41,20 @@ Route::get('/admin/home', function (){
    return view('/admin/homeAdmin');
 });
 
+Route::get('/payment', function () {
+    return view('/user/payment');
+});
+
+Route::get('/contact', function () {
+    return view('/user/contactPage');
+});
+
+Route::get('/login', function () {
+    return view('/user/login');
+});
+Route::get('/payment', function () {
+    return view('/user/paymentPage');
+});
 
 Route::get('/admin/new-user',function(){
     return view('/admin/newUser');
@@ -61,6 +75,7 @@ Route::post('/admin/createProduct','ProductController@createNewProduct');
 //
 Route::get('/getAllCategory','CategoryController@getAllCategory');
 Route::get('/getCategoryByIdAjax','CategoryController@getCategoryByIdAjax');
+
 
 
 Route::get('/detail-product-id={id}','ProductController@getProductById');

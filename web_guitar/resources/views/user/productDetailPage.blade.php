@@ -80,7 +80,7 @@
         {{--end section 2--}}
     </div>
     <link href="{{url('asset/css/productDetailPage.css')}}" rel="stylesheet" type="text/css" media="all"/>
-    <script src="asset/js/productPage.js"></script>
+    {{--<script src="asset/js/productPage.js"></script>--}}
     <script src="asset/js/productDetailPage.js"></script>
 @endsection
 

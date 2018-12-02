@@ -21,39 +21,17 @@
                     <th style="width:10%"></th>
                 </tr>
                 </thead>
-                <tbody>
-                <?php
-                for ($i = 0; $i < 4; $i++) {
-                ?>
-                <tr>
-                    <td><img src="assets/images/product/product-1.png" alt="Avatar" style="width:100%"></td>
-                    <td data-th="Product">
-                        <h4 class="nomargin">Cordoba C1 3/4</h4>
-                    </td>
-                    <td data-th="Price">$149.5 <?= $i ?></td>
-                    <td data-th="Quantity">
-                        <input type="number" class="form-control text-center" value="1">
-                    </td>
-                    <td data-th="Subtotal" class="text-center">$149.5</td>
-                    <td class="actions" data-th="">
-                        <button class="btn btn-info btn-delete">x<i class="fa fa-refresh"></i></button>
-                    </td>
-                </tr>
-                <?php
-                }
-                ?>
+                <tbody id="your-cart">
+
 
                 </tbody>
                 <tfoot>
-                <tr class="visible-xs">
-                    <td class="text-center"><strong>Total 1.99</strong></td>
-                </tr>
                 <tr>
-                    <td style="float: left;"><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i>
+                    <td style="float: left;"><a href="/home" class="btn btn-warning"><i class="fa fa-angle-left"></i>
                             Continue Shopping</a></td>
                     <td colspan="3" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-                    <td><a href="payment.php" class="btn btn-success btn-block">Go to Payment<i
+                    <td class="hidden-xs text-center">Total: $ <strong  id="total"></strong></td>
+                    <td><a href="/payment" class="btn btn-success btn-block">Go to Payment<i
                                     class="fa fa-angle-right"></i></a></td>
                 </tr>
                 </tfoot>

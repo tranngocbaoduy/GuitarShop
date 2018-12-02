@@ -58,7 +58,7 @@
         <div class="row is-flex list-product" id="best-seller">
             <!--            Product is be here-->
             @foreach($products as $product)
-                <div class="col-lg-3 col-md-6 col-sm-6 product">
+                <div class="col-lg-3 col-md-6 col-sm-6 product"  id="{{$product->id}}">
                     <img src="admin/uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
                     <h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>
                 </div>

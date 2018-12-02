@@ -83,15 +83,32 @@ $(document).ready(function(){
 
             $("#add-to-cart").on('click',function () {
                 let yourCartJsonString = '';
+                let exist = false;
                 let yourCart = [];
                 let check = sessionStorage.getItem("cart");
                 if(check == null){
-                    sessionStorage.setItem("cart","");
+                    sessionStorage.setItem("cart",null);
                 }else{
                     yourCartJsonString = sessionStorage.getItem("cart");
                     yourCart = JSON.parse(yourCartJsonString);
+
+                    for(let i = 0 ; i<yourCart.length;i++){
+                        if(result['product']['id']==yourCart[i]['id']){
+                            yourCart[i]['quantity']++;
+                            exist=true;
+                            break;
+                        }
+                    }
                 }
-                yourCart.push(result['product']['id']);
+
+                if(!exist) {
+                    let data = {
+                        id:result['product']['id'],
+                        quantity:1
+                    }
+                    yourCart.push(data);
+                }
+
                 console.log(yourCart);
                 yourCartJsonString = JSON.stringify(yourCart);
                 sessionStorage.setItem("cart", yourCartJsonString);

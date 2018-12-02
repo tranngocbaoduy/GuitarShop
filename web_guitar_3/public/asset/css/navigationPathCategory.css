@@ -1,0 +1,30 @@
+.navigation-path-category{
+    padding-top: 20px;
+}
+.category {
+    width:75%;
+    background-color: #565F61;
+    padding-left: 10px;
+    color: white;
+    margin-bottom:0px;
+}
+.category ul{
+    padding-left: 10px;
+    list-style-type: none;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+.category h1{
+    padding-top: 10px;
+    padding-left: 10px
+}
+
+@media (max-width: 990px) {
+    .navigation-path-category{
+        display:none;
+    }
+}
+
+.list-category li a{
+    color:white;
+}

@@ -34,7 +34,7 @@
 
     <input type="hidden" id="check-btn" style="display:none" value="0">
     <nav class="navbar navbar-default ">
-        <div class="container-fluid">
+        {{--<div class="container-fluid">--}}
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle button-minimize" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
@@ -57,14 +57,14 @@
                             <!--                        <li><a href="product.php">Ukulele</a></li>-->
                         </ul>
                     </li>
-                    <li><a href="contact.php">CONTACT</a></li>
+                    <li><a href="/contact">CONTACT</a></li>
 
 
                 </ul>
 
 
             </div>
-            <div class="row my-input nav navbar-nav ">
+            <div class=" my-input nav navbar-nav ">
                 <div class="input-group" style="border-radius: 0px;float: right;">
                     <input type="text" class="form-control" placeholder="Search Your Guitar.." style="background-color: white;color:black">
                     <span class="input-group-btn">
@@ -74,11 +74,13 @@
 					</span>
                 </div>
             </div>
-        </div>
+        {{--</div>--}}
     </nav>
 </div>
 @yield('carousel')
+<div class="container-fluid" >
 @yield('navigation_path')
+</div>
 <main class="container" >
     @yield('navigation_left')
     @yield('content')

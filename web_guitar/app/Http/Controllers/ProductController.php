@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Freshbitsweb\Laratables\Laratables;
-
+use function Sodium\add;
 
 
 class ProductController extends Controller
@@ -47,16 +47,41 @@ class ProductController extends Controller
         if (count($products) != 1) {
             $msg = array(
                 'status' => false,
-                'message' =>  'Get Product By Category Failed',
+                'message' =>  'Get Product By Id Failed',
 
             );
             return response()->json($msg);
         }
         $msg = array(
             'status' => true,
-            'message' => 'Get Product By Category Success',
+            'message' => 'Get Product By Id Success',
             'info'=> $request->id,
             'product' => $products[0]
+        );
+        return response()->json($msg);
+    }
+
+    public function getProductByGroupIdAjax(Request $request)
+    {
+        $yourCartId = $request->groupProductId;
+        $productGroup = [];
+        for($i = 0 ; $i < count($yourCartId);$i++){
+            $products = Product::where('id', $yourCartId[$i])->get();
+            if (count($products) != 1) {
+                $msg = array(
+                    'status' => false,
+                    'message' =>  'Get Group Product By Group Id Failed',
+                );
+                return response()->json($msg);
+            }
+            $productGroup[] = $products[0];
+        }
+
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Group Product By Group Id Success',
+            'info'=> $request->id,
+            'productGroup' => $productGroup
         );
         return response()->json($msg);
     }
