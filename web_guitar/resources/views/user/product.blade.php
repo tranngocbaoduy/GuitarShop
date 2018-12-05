@@ -17,10 +17,12 @@
                     </div>
                 </div>
                 <!-- product -->
+                <input type="hidden" value="{{$idCate}}" id="hold-id-cate">
+                <input type="hidden" value="3" id="hold-skip-product">
                 <div class="row is-flex" id="list-product-by-cate">
                     @foreach($products as $product)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 product" id="{{$product->id}}">
-                            <img src="admin/uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
+                            <img src="uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
                             <h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>
                         </div>
                     @endforeach
@@ -31,7 +33,7 @@
                 <div class="row is-flex" style="margin-top: 20px;text-align: center">
                     <div class="col-lg-4 col-sm-3 col-xs-3"></div>
                     <div class="col-lg-4 col-sm-6 col-xs-6">
-                        <button type="button" class="btn btn-default"
+                        <button type="button" class="btn btn-default btn-more"
                                 style="color:black;border-radius: 0px;margin-top: 20px;width: 100%">MORE
                         </button>
                     </div>
@@ -59,7 +61,7 @@
             <!--            Product is be here-->
             @foreach($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6 product"  id="{{$product->id}}">
-                    <img src="admin/uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
+                    <img src="uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
                     <h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>
                 </div>
             @endforeach

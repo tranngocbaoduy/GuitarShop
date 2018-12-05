@@ -23,7 +23,7 @@ class FileController extends Controller
         $currentTime= time();
         if($request->hasfile('image-product'))
         {
-            $folderDirection = 'admin/uploads/';
+            $folderDirection = 'uploads/';
             $file = $request->file('image-product');
             $filename = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension(); // getting image extension

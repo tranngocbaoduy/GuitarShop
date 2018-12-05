@@ -25,7 +25,7 @@ class ProductController extends Controller
 
     public function getAllProduct()
     {
-        $products = Product::all();
+        $products = Product::all()->take(4);
         if (count($products) <= 0) {
             return view('error/404');
         }
@@ -99,7 +99,7 @@ class ProductController extends Controller
     {
         $idCate = $request->id;
         if($idCate !=0) {
-            $products = Product::where('id_category', $idCate)->get();
+            $products = Product::where('id_category', $idCate)->take(3)->get();
         }else{
             $products = Product::all();
             $msg = array(
@@ -116,7 +116,48 @@ class ProductController extends Controller
             );
             return view('error/404');
         }
-        return view('/user/product', ['products' => $products]);
+        return view('/user/product', ['products' => $products],['idCate'=>$idCate]);
+//
+    }
+
+    public function getProductByCategoryMore(Request $request)
+    {
+        $idCate = $request->id;
+        $numberSkip = $request->numberSkip;
+        $whatPage = $request->whatPage;
+        $numberTake = 0;
+        if($whatPage == 'Product'){
+            $numberTake = 3;
+        }else if($whatPage == 'Home'){
+            $numberTake = 4;
+        }
+        if($idCate !=0) {
+            $products = Product::where('id_category', $idCate)->skip($numberSkip)->take($numberTake)->get();
+        }else{
+            $products = Product::skip($numberSkip)->take($numberTake)->get();
+        }
+        if (count($products) <= 0) {
+            $msg = array(
+                'status' => false,
+                'message' => 'Get More Product Failed',
+                'count' =>count($products),
+            );
+            return response()->json($msg);
+        }
+        if($whatPage == 'Product'){
+            $numberSkip += 3;
+        }else if($whatPage == 'Home'){
+            $numberSkip += 4;
+        }
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Product By Category Successful',
+            'products' => $products,
+            'idCate' =>$idCate,
+            'numberSkip'=> $numberSkip,
+        );
+        return response()->json($msg);
+
 //
     }
 
@@ -138,7 +179,7 @@ class ProductController extends Controller
         $priceProduct = $request->priceProduct;
         $descriptionProduct = $request->descriptionProduct;
         $imageProduct =$currentTime.'_'.$request->imageProduct;
-        $path = "<img src="."/admin/uploads/".$imageProduct." alt=\"Avatar\" style=\"width:30%\">";
+        $path = "<img src=\""."../uploads/".$imageProduct."\" alt=\"Avatar\" style=\"width:50%\">";
         $quantityProduct = $request->quantityProduct;
         $categoryProduct = $request->cateProduct;
 

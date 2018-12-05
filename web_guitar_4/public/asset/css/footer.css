@@ -1,0 +1,46 @@
+
+
+/*footer*/
+#footer {
+    background-color: #565F61;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    display: block;
+    bottom:0;
+    width:100%;
+}
+.footer-navigation li:first-child{
+	font-size:18px;
+	margin-bottom:-30px;
+	color:#E8FFDC;
+}
+.footer-navigation li a{
+	float:left;
+	color:white;
+}
+.footer-navigation{
+	list-style-type: none;
+	overflow: hidden;
+}
+.footer-right{
+	margin-top:20px;
+	padding-bottom: 30px;
+}
+.footer-left{
+	text-align: left;
+	margin-top: 30px;
+	padding-left:50px;
+}
+.notsection{
+    text-align:left;
+    background-color:#565F61;
+    color:white;
+    box-sizing: border-box;
+    margin-top:20px;
+}
+.store-year{
+	margin-top: 10px;
+	width:100%;
+	text-align: center;
+	background-color:white !important;
+}

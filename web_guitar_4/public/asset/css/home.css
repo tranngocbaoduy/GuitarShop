@@ -1,0 +1,37 @@
+
+body{
+    font-family: Quicksand;
+}
+
+.card-header{
+    font-family: "Quicksand";
+    font-size: 30px;
+    text-align: center;
+}
+.title-cart{
+    font-family: "Quicksand";
+    text-align: center;
+}
+.quote {
+    font-size: 18px;
+    font-family: Quicksand;
+}
+
+.payment {
+    background-color: black;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
+th{
+    text-align: center;
+    font-size:20px;
+    font-weight: bold;
+    color: #c12e2a;
+}
+td{
+    text-align: center;
+}
+table{
+    margin-top:10px;
+}

@@ -23,7 +23,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{url('css/bootstrap.css')}}">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{url('css/bootstrap-theme.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {{--<link rel="stylesheet" href="{{url('css/bootstrap-theme.css')}}">--}}
 </head>
 <body>
 <div id="header">
@@ -57,6 +58,7 @@
                             <!--                        <li><a href="product.php">Ukulele</a></li>-->
                         </ul>
                     </li>
+                    <li><a href="/yourCart">CART</a></li>
                     <li><a href="/contact">CONTACT</a></li>
 
 

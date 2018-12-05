@@ -26,7 +26,7 @@ $(document).ready(function(){
             let htmlInfo= '';
             console.log(result['message']);
             htmlInfo += '<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 product">\n' +
-                '                        <img src="admin/uploads/';
+                '                        <img src="uploads/';
             htmlInfo += result['product']['image'];
             htmlInfo += '" alt="Avatar" style="width:100%">\n' +
                 '                    </div>\n' +
@@ -42,7 +42,7 @@ $(document).ready(function(){
                 '                            <li>Quantity\n' +
                 '                                <div class="qty mt-5" style="float: right; margin-left: -70px">\n' +
                 '                                    <span class="minus bg-dark">-</span>\n' +
-                '                                    <input type="number" class="count" name="qty" value="1">\n' +
+                '                                    <input type="number" id="quantity-product"class="count" name="qty" value="1">\n' +
                 '                                    <span class="plus bg-dark">+</span>\n' +
                 '                                </div>\n' +
                 '\n' +
@@ -87,11 +87,12 @@ $(document).ready(function(){
                 let yourCart = [];
                 let check = sessionStorage.getItem("cart");
                 if(check == null){
-                    sessionStorage.setItem("cart",null);
+                    sessionStorage.setItem("cart",[]);
                 }else{
                     yourCartJsonString = sessionStorage.getItem("cart");
-                    yourCart = JSON.parse(yourCartJsonString);
-
+                    if(yourCartJsonString!=''){
+                        yourCart = JSON.parse(yourCartJsonString);
+                    }
                     for(let i = 0 ; i<yourCart.length;i++){
                         if(result['product']['id']==yourCart[i]['id']){
                             yourCart[i]['quantity']++;
@@ -104,7 +105,8 @@ $(document).ready(function(){
                 if(!exist) {
                     let data = {
                         id:result['product']['id'],
-                        quantity:1
+                        quantity: $('#quantity-product').val(),
+                        price: result['product']['price'],
                     }
                     yourCart.push(data);
                 }

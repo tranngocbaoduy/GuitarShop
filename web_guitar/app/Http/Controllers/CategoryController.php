@@ -13,7 +13,11 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         if (count($categories) == 0) {
-            return view('error/404');
+            $msg = array(
+                'status'=> false,
+                'message'=> 'Get Category Failed',
+            );
+            return response()->json($msg);
         }
         $msg = array(
             'status'=> true,

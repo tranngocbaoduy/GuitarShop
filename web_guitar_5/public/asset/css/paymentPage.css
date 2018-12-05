@@ -1,0 +1,35 @@
+.name-info-user div{
+    margin:0px;
+    padding: 0px;
+}
+.name-info-user div div:first-child{
+    padding:0 5px 0 0;
+}
+.info-user{
+    margin:0px;
+    padding:0px;
+}
+.image-bank img{
+    padding: 0 16px 0 0;
+}
+.info-card-bank input{
+    float:right;
+    margin-left:10px;
+}
+.info-card-bank p{
+    float:left;
+}
+.title-page{
+    font-family: "Quicksand";
+    text-align: center;
+}
+
+.btn-submit{
+    width:40%;
+    background-color: black;
+    color:white;
+}
+
+.your-payment{
+    margin-bottom: 40px;
+}

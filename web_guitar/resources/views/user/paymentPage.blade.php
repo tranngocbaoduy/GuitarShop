@@ -5,7 +5,7 @@
 
     <link href="{{url('asset/css/paymentPage.css')}}" rel="stylesheet">
 
-    <div class="container your-payment" >
+    <div class="container your-payment">
         <div class="row is-flex">
             <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
             <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
@@ -47,11 +47,11 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <select class="form-control" id="country">
-                                        <option>Your Country</option>
-                                        <option>VN</option>
-                                        <option>Phap</option>
-                                        <option>Japaneses</option>
-                                        <option>Korea</option>
+                                        <option value="0">Your Country</option>
+                                        <option value="VN">VN</option>
+                                        <option value="Phap">Phap</option>
+                                        <option value="Japaneses">Japaneses</option>
+                                        <option value="Korea">Korea</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6">
@@ -68,7 +68,7 @@
             <div class="col-lg-5 login-input">
                 <div class="row">
                     <h5><span class="badge">!</span><b> Payment Method</b></h5>
-                    <form name="my-login" onsubmit="return validateInput()" method="GET">
+                    <form name="my-login" method="GET">
                         <div class="form-group image-bank">
                             <img src="asset/images/common/bank.png" width="50px">
                             <img src="asset/images/common/visa.png" width="50px">
@@ -92,26 +92,60 @@
                         </div>
                         <div class="form-group">
                             <div class="form-inline">
-                                <strong>Total: $456</strong>
+                                <strong id="total">Total: $456</strong>
                                 <input class="form-control" type="text" style="visibility: hidden">
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default btn-submit form-control">Payment</button>
+                            <button type="button" class="btn btn-submit btn-payment form-control">Payment</button>
                         </div>
-                        <p id="message" style="color:red;display: none"></p>
-                        <div class="alert alert-warning" style="display: none" id="error-message">
-                            <strong>Warning!</strong> Indicates a warning that might need attention.
-                        </div>
-                        <p id="error-message"></p>
+
                     </form>
+                    <div class="alert alert-warning message-error" style="display: none;color:red">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <button class="btn btn-success btn-bill"  data-toggle="modal" data-target="#myModal" style="display:none;">Bill</button>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="cancelAdd"><span
+                                class="glyphicon glyphicon-share"></span></button>
+                    <h2 style="color: tomato"><span class="glyphicon glyphicon-shopping-cart"></span> Your Bill</h2>
+                    <h4 class="label label-success" style="width: 80%">You ordered successful !!!</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="info-customer"></div>
+
+                    <table class="table table-hover" width="100%">
+                        <thead>
+                        <tr>
+                            <td style="opacity: 0.4;font-weight: bold">No.</td>
+                            <td style="opacity: 0.4;font-weight: bold">Name.</td>
+                            <td style="opacity: 0.4;font-weight: bold">Price.</td>
+                            <td style="opacity: 0.4;font-weight: bold">Quantity.</td>
+                        </tr>
+                        </thead>
+                        <tbody id="info-product"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="cancelAdd" class="btn btn-danger btn-default pull-left"
+                            data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </button>
+                    <p><a href="#"> Help ?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{{url('asset/js/responsivePage.js')}}"></script>
-    <script src="{{url('asset/js/validateInput.js')}}"></script>
+    <script src="{{url('asset/js/paymentPage.js')}}"></script>
 
 @endsection
 @extends('layouts.footer')

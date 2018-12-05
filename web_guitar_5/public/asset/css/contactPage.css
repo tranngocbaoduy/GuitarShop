@@ -1,0 +1,12 @@
+.title-page{
+    font-family: "Quicksand";
+    text-align: center;
+}
+
+.container{
+    margin-bottom: 40px;
+}
+textarea{
+    overflow:auto;
+    resize:none;
+}

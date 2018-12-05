@@ -14,11 +14,13 @@
                 <img src="asset/images/common/line.png" alt="" class="line-decoration">
             </div>
         </div>
+        <input type="hidden" value="0" id="hold-id-cate">
+        <input type="hidden" value="4" id="hold-skip-product">
         <div class="row is-flex list-product" id="new-product">
             <!--                Product is be here-->
             @foreach($products as $product)
-                <div class="col-lg-3 col-md-6 col-sm-6 product">
-                    <img src="admin/uploads/{{($product->image)}}" alt="Avatar" style="width:100%">
+                <div class="col-lg-3 col-md-6 col-sm-6 product" id="{{$product->id}}">
+                    <img src="uploads/{{($product->image)}}" alt="Avatar" style="width:100%">
                     <h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>
                 </div>
             @endforeach
@@ -49,7 +51,7 @@
             <!--            Product is be here-->
             @foreach($products as $product)
                 <div class="col-lg-3 col-md-6 col-sm-6 product">
-                    <img src="admin/uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
+                    <img src="uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
                     <h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>
                 </div>
             @endforeach
@@ -66,7 +68,7 @@
         <!-- end section 3 -->
     </div>
 
-    <script src="{{url('asset/js/indexPage.js')}}"></script>
+    <script src="{{url('asset/js/homePage.js')}}"></script>
     {{--    <link href="{{url('asset/css/home.css')}}" rel="stylesheet" type="text/css" media="all"/>--}}
     <link href="{{url('asset/css/indexPage.css')}}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{{url('asset/css/carousel.css')}}" rel="stylesheet" type="text/css" media="all"/>

@@ -31,7 +31,7 @@ Route::get('/admin/viewAllUser',function (){
 
 Route::get('/home', 'ProductController@getAllProduct');
 Route::get('/', 'ProductController@getAllProduct');
-
+//
 Route::get('/admin', function () {
     return view('auth/login');
 });
@@ -49,9 +49,9 @@ Route::get('/contact', function () {
     return view('/user/contactPage');
 });
 
-Route::get('/login', function () {
-    return view('/user/login');
-});
+//Route::get('/login', function () {
+//    return view('/user/login');
+//});
 Route::get('/payment', function () {
     return view('/user/paymentPage');
 });
@@ -76,6 +76,7 @@ Route::post('/admin/createProduct','ProductController@createNewProduct');
 Route::get('/getAllCategory','CategoryController@getAllCategory');
 Route::get('/getCategoryByIdAjax','CategoryController@getCategoryByIdAjax');
 
+Route::get('/getProductByCategoryMore','ProductController@getProductByCategoryMore');
 
 
 Route::get('/detail-product-id={id}','ProductController@getProductById');
@@ -96,6 +97,13 @@ Route::get('/admin/remove-product-id={id}','ProductController@removeProductById'
 //Route::post('/createProduct','ProductController@createNewProduct');
 //
 Route::get('/getProductByIdCategory={id}','ProductController@getProductByCategory');
+
+
+
+// create bill
+
+Route::post('/createBill','BillController@createBill')->name('createBill');
+
 
 //
 //Route::get('/new-product',function(){
@@ -118,6 +126,6 @@ Route::get('/getProductByIdCategory={id}','ProductController@getProductByCategor
 //
 
 //Route::post('/updateUser','UserController@updateUser');
-//Auth::routes();
+Auth::routes();
 //
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
