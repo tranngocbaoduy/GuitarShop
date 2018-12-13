@@ -17,7 +17,7 @@ class CreateCustomersInfoTable extends Migration
         Schema::create('customers_info', function (Blueprint $table) {
             $table->bigInteger('id')->autoIncrement();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('country')->nullable();

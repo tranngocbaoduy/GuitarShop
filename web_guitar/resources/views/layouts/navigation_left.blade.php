@@ -12,23 +12,23 @@
         </div>
         <div class=" category">
             <h1><b>Brands</b></h1>
-            <ul>
-                <li>Charvel</li>
-                <li>Cordoba</li>
-                <li>EVH</li>
-                <li>Fender</li>
-                <li>Gretsch</li>
-                <li>Ibanez</li>
-                <li>Jackson</li>
-                <li>Kapok</li>
-                <li>Lazer</li>
-                <li>Roland</li>
-                <li>Samick</li>
-                <li>Sigma</li>
-                <li>Suzuki</li>
-                <li>Takamine</li>
-                <li>Tanglewood</li>
-                <li>Taylor</li>
+            <ul class="list-brand">
+                {{--<li>Charvel</li>--}}
+                {{--<li>Cordoba</li>--}}
+                {{--<li>EVH</li>--}}
+                {{--<li>Fender</li>--}}
+                {{--<li>Gretsch</li>--}}
+                {{--<li>Ibanez</li>--}}
+                {{--<li>Jackson</li>--}}
+                {{--<li>Kapok</li>--}}
+                {{--<li>Lazer</li>--}}
+                {{--<li>Roland</li>--}}
+                {{--<li>Samick</li>--}}
+                {{--<li>Sigma</li>--}}
+                {{--<li>Suzuki</li>--}}
+                {{--<li>Takamine</li>--}}
+                {{--<li>Tanglewood</li>--}}
+                {{--<li>Taylor</li>--}}
             </ul>
         </div>
         <div class=" category">

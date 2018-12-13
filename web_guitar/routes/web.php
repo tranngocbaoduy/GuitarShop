@@ -22,15 +22,17 @@ Route::get('/admin/viewAllProduct',function (){
     return view('admin/manageProduct');
 });
 
-Route::get('/getAllUser','UserController@getAllUser');
+Route::get('/getAllCustomerByLaratable','CustomerController@getAllCustomerByLaratable')->name('getAllCustomer');
 
-Route::get('/admin/viewAllUser',function (){
-    return view('admin/manageUser');
+Route::get('/admin/viewAllCustomer',function (){
+    return view('admin/manageCustomer');
 });
 
 
 Route::get('/home', 'ProductController@getAllProduct');
 Route::get('/', 'ProductController@getAllProduct');
+Route::get('/getBestSeller', 'ProductController@getBestSellerMore');
+Route::get('/getProductSameCategoryMore', 'ProductController@getProductSameCategoryMore');
 //
 Route::get('/admin', function () {
     return view('auth/login');
@@ -56,8 +58,8 @@ Route::get('/payment', function () {
     return view('/user/paymentPage');
 });
 
-Route::get('/admin/new-user',function(){
-    return view('/admin/newUser');
+Route::get('/admin/new-customer',function(){
+    return view('/admin/newCustomer');
 });
 
 Route::get('/admin/new-product',function(){
@@ -68,18 +70,21 @@ Route::get('/yourCart',function(){
     return view('/user/yourCartPage');
 });
 
-Route::post('/admin/createUser','UserController@createNewUser');
+//Route::post('/admin/createUser','UserController@createNewUser');
 Route::post('/admin/createProduct','ProductController@createNewProduct');
 //
 //
 //
 Route::get('/getAllCategory','CategoryController@getAllCategory');
+Route::get('/getAllBrand','BrandController@getAllBrand');
 Route::get('/getCategoryByIdAjax','CategoryController@getCategoryByIdAjax');
+Route::get('/getBrandByIdAjax','BrandController@getBrandByIdAjax');
 
 Route::get('/getProductByCategoryMore','ProductController@getProductByCategoryMore');
 
 
 Route::get('/detail-product-id={id}','ProductController@getProductById');
+//Route::post('/detail-product-id'={},'ProductController@getProductById');
 Route::get('/getProductByIdAjax','ProductController@getProductByIdAjax');
 //
 //
@@ -90,20 +95,60 @@ Route::get('file','FileController@index');
 Route::post('file','Filecontroller@doUpload')->name('uploadFile');
 
 
-Route::get('/admin/update-product-id={id}','ProductController@updateProductById');
-Route::get('/admin/adjust-product-id={id}','ProductController@getProductByIdToAjust');
-Route::get('/admin/remove-product-id={id}','ProductController@removeProductById');
+Route::post('/updateProductById','ProductController@updateProductById');
+Route::get('/adjust-product-id={id}','ProductController@getProductByIdToAjust');
+Route::get('/remove-product-id={id}','ProductController@removeProductById');
+
+
+//Route::post('/updateProductById','ProductController@updateProductById');
+Route::get('/adjust-customer-id={id}','CustomerController@getCustomerById');
+//Route::get('/remove-product-id={id}','ProductController@removeProductById');
 
 //Route::post('/createProduct','ProductController@createNewProduct');
 //
-Route::get('/getProductByIdCategory={id}','ProductController@getProductByCategory');
+Route::get('/getProductByIdCategory={id}','ProductController@getProductByIdCategory');
+Route::get('/getProductByIdBrand={id}','ProductController@getProductByIdBrand');
 
+//search Auto Complete
+Route::get('/searchAutoComplete','ProductController@searchAutoComplete');
 
+//Route::get("/searchAutoComplete",array('as'=>'searchAutoComplete','uses'=> 'ProductController@searchAutoComplete'));
+
+Route::get('/userLogin',function (){
+    return view("user/loginPage");
+});
+Route::get('/userSignUp',function (){
+    return view("user/signUpPage");
+});
+
+Route::get('/signUp',function (){
+    return view("user/signUpPage");
+});
+Route::post('/customerSignUp', "CustomerController@createCustomerAccount");
+Route::post('/customerLogin', "CustomerController@loginCustomer");
+
+Route::post('/checkLogin', "CustomerController@checkLogin");
 
 // create bill
 
 Route::post('/createBill','BillController@createBill')->name('createBill');
+Route::post('/getInfoUserPayment','BillController@getInfoUserPayment');
 
+// manage Account Customer
+Route::get('/myAccount',function (){
+   return view('user/manageAccount');
+});
+
+Route::get('/myOrder',function (){
+    return view('user/myOrder');
+});
+
+Route::get('/ajustAccount',function (){
+   return view('user/ajustAccountCustomer');
+});
+
+Route::post('/updateCustomer','CustomerController@updateCustomer');
+Route::post('/getInfoOrder','BillController@getInfoOrder');
 
 //
 //Route::get('/new-product',function(){
@@ -116,11 +161,11 @@ Route::post('/createBill','BillController@createBill')->name('createBill');
 //Route::get('/home', 'HomeController@index')->name('home');
 //
 ////user
-////Route::get('/manageUser', 'UserController@getAllUser');
-//Route::get('/manageUserByAjax', 'UserController@getAllUserByAjax');
+////Route::get('/manageCustomer', 'UserController@getAllUser');
+//Route::get('/manageCustomerByAjax', 'UserController@getAllUserByAjax');
 //Route::get('/adjust-user-id={id}','UserController@getUserById');
 ////
-////Route::get('/new-user',function(){
+////Route::get('/new-customer',function(){
 ////    return view('/admin/detailUser');
 ////});
 //

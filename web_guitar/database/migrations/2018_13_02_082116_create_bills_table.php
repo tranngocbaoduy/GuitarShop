@@ -19,6 +19,7 @@ class CreateBillsTable extends Migration
             $table->string('time');
             $table->float('total');
             $table->bigInteger('id_customer_info');
+            $table->bigInteger('id_customer')->default(0);
             $table->timestamps();
         });
 

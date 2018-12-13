@@ -9,10 +9,9 @@ class Bill extends Model
     //
 
     protected $table = 'bills';
-    public $timestamps = false;
 
     protected $fillable = [
-        'name','description','id'
+        'name','description','id','id_customer'
     ];
 
 

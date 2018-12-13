@@ -13,7 +13,7 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-//        Schema::dropIfExists('categories');
+        Schema::dropIfExists('categories');
         Schema::create('categories', function (Blueprint $table) {
             $table->integer('id')->autoIncrement()->unsigned();
             $table->string('name');
@@ -21,9 +21,6 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
         });
 
-//        Schema::create('categories', pages (Blueprint $table) {
-        ///
-//        });
     }
 
     /**

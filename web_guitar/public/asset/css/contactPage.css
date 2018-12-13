@@ -1,6 +1,7 @@
 .title-page{
-    font-family: "Quicksand";
+    font-family: "Arvo";
     text-align: center;
+    margin-bottom: 25px;
 }
 
 .container{
@@ -9,4 +10,41 @@
 textarea{
     overflow:auto;
     resize:none;
+}
+
+#info{
+
+    background-color: whitesmoke;
+}
+.navi{
+    list-style-type: none;
+    padding: 30px 30px;
+    background-color: whitesmoke
+}
+.navi>li:first-child{
+    font-family: Arvo;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.navi>li>a{
+    color:black !important;
+}
+.account-info-general>div>ul{
+    list-style-type: none;
+    padding: 30px 30px;
+
+}
+hr{
+    border-color: #3B3B3B;
+    margin: 5px 0;
+    opacity: 0.3;
+}
+.account-info-general>div>ul>li:first-child{
+    font-family: Arvo;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.account-info-general>div>ul>li>a{
+    color:black !important;
 }

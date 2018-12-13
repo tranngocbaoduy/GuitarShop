@@ -13,9 +13,10 @@
     float:right;
 }
 .btn-submit{
+    margin-top:10px;
     width:100%;
     background-color: black;
-    color:black;
+    color:white;
 }
 .btn-create-new-account{
     width:100%;
@@ -53,4 +54,11 @@ form{
 #error-message{
     color:red;
     font-weight: bold;
+}
+#my-login{
+    margin-bottom: 50px;
+}
+
+#my-signup{
+    margin-bottom: 50px;
 }

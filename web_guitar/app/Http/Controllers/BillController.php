@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\BestSeller;
+use App\Customer;
 use App\Product;
 use App\ProductInfo;
 use Illuminate\Http\Request;
@@ -14,15 +16,75 @@ class BillController extends Controller
     //
     public const length = 10;
 
-    public function getToken($length){
+    public function getInfoUserPayment(Request $request)
+    {
+        $token = $request->token;
+
+        $customers = Customer::where('remember_token', $token)->get();
+
+        if (count($customers) != 1) {
+            $msg = array(
+                'status' => false,
+                'message' => 'Get Info Customer Failed',
+            );
+            return response()->json($msg);
+        }
+
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Info Product Success',
+            'customer' => $customers[0],
+        );
+        return response()->json($msg);
+    }
+
+    public function getInfoOrder(Request $request)
+    {
+        $token = $request->token;
+
+        $customers = Customer::where('remember_token', $token)->get();
+
+        if (count($customers) != 1) {
+            $msg = array(
+                'status' => false,
+                'message' => 'Get Info Customer Failed',
+            );
+            return response()->json($msg);
+        }
+//
+        $billOfCustomer = Bill::where('id_customer',$customers[0]->id)->orderBy('id', 'desc')->get();
+        if (count($billOfCustomer) <= 0) {
+            $msg = array(
+                'status' => false,
+                'message' => 'Get Bill Failed',
+            );
+            return response()->json($msg);
+        }
+        $listProductOrdered = [];
+
+        for($i = 0 ; $i< count($billOfCustomer);$i++) {
+            $productOrdered = ProductInfo::where('id_bill',$billOfCustomer[$i]->id)->get();
+            $listProductOrdered[] = $productOrdered;
+        }
+
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Info Product Success',
+            'listProductOrdered' => $listProductOrdered,
+        );
+        return response()->json($msg);
+    }
+
+    public function getToken($length)
+    {
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-        $codeAlphabet.= "0123456789";
+        $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet .= "0123456789";
         $max = strlen($codeAlphabet); // edited
 
-        for ($i=0; $i < $length; $i++) {
-            $token .= $codeAlphabet[random_int(0, $max-1)];
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max - 1)];
         }
         return $token;
     }
@@ -30,25 +92,45 @@ class BillController extends Controller
     public function createBill(Request $request)
     {
 
-        $token = BillController::getToken(10);
+        $tokenBill = BillController::getToken(10);
 
         $dataUser = $request->dataUser;
         $dataProduct = $request->dataProduct;
 
-        $customer = new CustomerInfo;
+        $tokenCustomer = $dataUser['tokenCustomer'];
+        // create Bill
+        $newBill = new Bill;
+        $newBill->total = $dataProduct['total'];
 
+        //check Customer exist to add bill for customer
+        if ($tokenCustomer != '') {
+            $customers = Customer::where('remember_token',$tokenCustomer)->get();
+
+            if (count($customers)!=1) {
+                $msg = array(
+                    'status' => false,
+                    'message' => 'Exist Customer But Not Add Bill For Customer',
+                );
+                return response()->json($msg);
+            }
+            $newBill->id_customer = $customers[0]->id;
+        }
+
+        $customerInfo = new CustomerInfo;
 //        Luu thong tin customer info
-        $customer->name = $dataUser['name'];
-        $customer->email = $dataUser['email'];
-        $customer->address = $dataUser['address'];
-        $customer->phone = $dataUser['phone'];
-        $customer->country = $dataUser['country'];
-        $customer->cardName = $dataUser['cardName'];
-        $customer->cardNumber = $dataUser['cardNumber'];
-        $customer->remember_token = $token;
-        $checkCreateCustomer = $customer->save();
+        $customerInfo->name = $dataUser['name'];
+        $customerInfo->email = $dataUser['email'];
+        $customerInfo->address = $dataUser['address'];
+        $customerInfo->phone = $dataUser['phone'];
+        $customerInfo->country = $dataUser['country'];
+        $customerInfo->cardName = $dataUser['cardName'];
+        $customerInfo->cardNumber = $dataUser['cardNumber'];
+        $customerInfo->remember_token = $tokenBill;
+        $checkCreateCustomer = $customerInfo->save();
 
-        if(!$checkCreateCustomer){
+
+        if (!$checkCreateCustomer) {
+            $customerInfo->delete();
             $msg = array(
                 'status' => false,
                 'message' => 'Create Info Customer Failed',
@@ -56,13 +138,13 @@ class BillController extends Controller
             return response()->json($msg);
         }
 
-        $newBill = new Bill;
-        $newBill->total = $dataProduct['total'];
+
         $newBill->time = time();
-        $newBill->id_customer_info = $customer->id;
+        $newBill->id_customer_info = $customerInfo->id;
         $checkCreateBill = $newBill->save();
 
-        if(!$checkCreateBill){
+        if (!$checkCreateBill) {
+            $newBill->delete();
             $msg = array(
                 'status' => false,
                 'message' => 'Create Bill Failed',
@@ -85,18 +167,22 @@ class BillController extends Controller
 //
             $quantityCustomerBuy = $dataProduct['product'][$i]['quantity'];
 
+            $productInfo->id_product = $dataProduct['product'][$i]['id'];
             $productInfo->name = $product[0]->name;
+            $productInfo->image = $product[0]->image;
             $productInfo->quantity = $quantityCustomerBuy;
-            $product[0]->quantity =  $product[0]->quantity - $quantityCustomerBuy;
 
-            //change quantity of product
+            $product[0]->quantity = $product[0]->quantity - $quantityCustomerBuy; //set quantity
+            $product[0]->hottest = $product[0]->hottest + 1; // set best sell
+
+            //change quantity and level hot of product
             $product[0]->save();
 
             $productInfo->price = $product[0]->price;
             $productInfo->id_bill = $newBill->id;
             $checkCreateProductInfo = $productInfo->save();
 //
-            if(!$checkCreateProductInfo){
+            if (!$checkCreateProductInfo) {
                 $msg = array(
                     'status' => false,
                     'message' => 'Create Info Product Failed',
@@ -107,14 +193,13 @@ class BillController extends Controller
             $listProductInfo[] = $productInfo;
         }
 
-
         $msg = array(
             'status' => true,
-            'message' => 'Create Bill Successful',
-            'bill'=> $newBill,
-            'customer'=> $customer,
+            'message' => 'Create Bill Success',
+            'bill' => $newBill,
+            'customer' => $customerInfo,
             'listProductInfo' => $listProductInfo,
-            'token' => $token,
+            'token' => $tokenBill,
         );
         return response()->json($msg);
     }

@@ -81,18 +81,17 @@ input:disabled{
     padding: 10px;
 }
 .detail li:first-child{
-    font-family: "Open Sans";
+    font-family: "Arvo";
     color: #c12e2a;
 }
 .title-product{
-    font-family: "Open Sans";
+    font-family: "Arvo";
     text-align: center;
 }
 .line-decoration{
     margin-top:40px;
     width:100%;
 }
-
 .product:hover{
     -webkit-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);
     -moz-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.66);

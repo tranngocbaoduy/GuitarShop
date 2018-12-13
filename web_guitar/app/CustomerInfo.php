@@ -10,7 +10,7 @@ class CustomerInfo extends Model
     protected $table = 'customers_info';
 
     protected $fillable = [
-        'name', 'address', 'email','cardName','cardNumber','phone','city','country'
+        'name', 'address', 'email','cardName','cardNumber','phone','city','country','created_at'
     ];
 
     /**

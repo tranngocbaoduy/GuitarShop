@@ -6,11 +6,6 @@ function validateInput() {
         $('.message-error').html("Invalid First Name. Please check again !!");
         $('#f-name').focus();
         return false;
-    } else if ($("#l-name").val() == "") {
-        $('.message-error').show('slow');
-        $('.message-error').html("Invalid Last Name. Please check again !!");
-        $('#l-name').focus();
-        return false;
     } else if ($("#address").val() == "") {
         $('.message-error').show('slow');
         $('.message-error').html("Invalid Address. Please check again !!");
@@ -57,144 +52,15 @@ function validateInput() {
 
 $(document).ready(function () {
 
+    let checkUserLogin = localStorage.getItem('tokenCustomer');
+    if (checkUserLogin != null) {
+        getInfoUserPayment(checkUserLogin);
+    }
     $(".btn-payment").click(function () {
-
-        if (validateInput()) {
-            let yourCartJsonString = '';
-            let yourCart = [];
-            let checkCart = sessionStorage.getItem("cart");
-
-            let dataUser = {
-                name: $("#f-name").val() + " " + $("#l-name").val(),
-                address: $("#address").val() + $("#city").val(),
-                phone: $("#phone").val(),
-                email: $("#email").val(),
-                country: $("#country").val(),
-                postCode: $("#code").val(),
-                cardName: $("#card-name").val(),
-                cardNumber: $("#card-number").val(),
-            }
-
-            if (checkCart == null) {
-                sessionStorage.setItem("cart", null);
-            } else {
-                yourCartJsonString = sessionStorage.getItem("cart");
-                yourCart = JSON.parse(yourCartJsonString);
-                console.log(yourCart);
-
-            }
-            //get product info in cart
-            let listProducts = [];
-            for (let i = 0; i < yourCart.length; i++) {
-                let product = {
-                    id: yourCart[i]['id'],
-                    quantity: yourCart[i]['quantity'],
-                    price: yourCart[i]['price'],
-                }
-                listProducts.push(product);
-            }
-
-            let dataProduct = {
-                product: listProducts,
-                total: sessionStorage.getItem('total'),
-            }
-
-            console.log(dataUser);
-            console.log(dataProduct);
-            let data = {
-                dataUser: dataUser,
-                dataProduct: dataProduct,
-            }
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax({
-                type: "post",
-                url: "/createBill",
-                data: data,
-                cache: false,
-                success: function (data) {
-                    console.log('Request sent !');
-                    if (data.status) {
-                        console.log('message: ' + data['token']);
-                        let htmlProductInfo = '';
-                        let htmlCustomerInfo = '';
-
-
-                        htmlCustomerInfo += " <table class=\"table table-hover\" ><tr>\n" +
-                            "                            <td style=\"opacity: 0.4\">Name. </td>\n" +
-                            "                            <td>" + data['customer']['name'] + "</td>\n" +
-                            "                        </tr>\n" +
-                            "                        <tr>\n" +
-                            "                            <td style=\"opacity: 0.4\">Address. </td>\n" +
-                            "                            <td>" + data['customer']['address'] + " " + data['customer']['country'] + "</td>\n" +
-                            "                        </tr>\n" +
-                            "                        <tr>\n" +
-                            "                            <td style=\"opacity: 0.4\">Email. </td>\n" +
-                            "                            <td>" + data['customer']['email'] + "</td>\n" +
-                            "                        </tr>\n" +
-                            "                        <tr>\n" +
-                            "                            <td style=\"opacity: 0.4\">Phone. </td>\n" +
-                            "                            <td>" + data['customer']['phone'] + "</td>\n" +
-                            "                        </tr> <tr>\n" +
-                            "                            <td style=\"opacity: 0.4\">Your code. </td>\n" +
-                            "                            <td>" + data['token'] + "</td>\n" +
-                            "                        </tr>   <tr>\n" +
-                            "                         <td>.</td><td><span style=\"width: 100%\" class=\"label label-danger\">This is your code use to check your order. Please check email to get code!!! Thanks</span></td>\n" +
-                            "                        </tr>" +
-                            "                            </table>";
-
-                        let count = 1;
-                        for (let i = 0; i < data['listProductInfo'].length; i++) {
-                            htmlProductInfo += "<tr>\n" +
-                                "                            <td>" + count + "</td>\n" +
-                                "                            <td>" + data['listProductInfo'][i]['name'] + "</td>\n" +
-                                "                            <td>" + data['listProductInfo'][i]['price'] + "</td>\n" +
-                                "                            <td>" + data['listProductInfo'][i]['quantity'] + "</td>\n" +
-                                "                        </tr>";
-                            count++;
-                        }
-                        htmlProductInfo += "<tr><td colspan='2'></td><td>Total. </td><td>" + data['bill']['total'] + "</td></tr>";
-
-                        $('#info-customer').html(htmlCustomerInfo);
-                        $('#info-product').html(htmlProductInfo);
-
-
-
-                        //show order bill
-                        $('.btn-bill').click();
-                        $('.close').click(function () {
-                            alert('You\'ll direct to Home Page. Thanks your purchase');
-                            sessionStorage.clear();
-                            window.location.assign('/home');
-
-                        });
-                        window.onclick = function (event) {
-                            alert('You\'ll direct to Home Page. Thanks your purchase');
-                            sessionStorage.clear();
-                            window.location.assign('/home');
-
-                        }
-
-                    }
-
-                },
-                error: function (data) {
-                    alert('Request Failed..');
-                }
-            });
-        }
-
-
+        payment();
     });
+
     $("#f-name").keyup(function () {
-        $('.message-error').hide('slow');
-    });
-    $("#l-name").keyup(function () {
         $('.message-error').hide('slow');
     });
     $("#address").keyup(function () {
@@ -223,3 +89,184 @@ $(document).ready(function () {
     });
 
 });
+
+function getInfoUserPayment(token) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    let data = {
+        token: token,
+    }
+
+    $.ajax({
+        type: "post",
+        url: "/getInfoUserPayment",
+        data: data,
+        cache: false,
+        success: function (data) {
+            console.log('Request sent !');
+            console.log('Message: ' + data['message']);
+
+
+            if (data['status']) {
+
+                let name = data['customer']['name'];
+                let address = data['customer']['address'];
+                let city = data['customer']['city'];
+                let phone = data['customer']['phone'];
+                let email = data['customer']['email'];
+                let country = data['customer']['country'];
+
+
+                $("#f-name").val(name);
+                $("#l-name").val();
+                $("#address").val(address);
+                $("#city").val(city);
+                $("#phone").val(phone);
+                $("#email").val(email);
+                $("#country").val();
+            }
+        },
+        error: function () {
+            alert('Request get info customer failed');
+        }
+    });
+}
+
+function payment() {
+    if (validateInput()) {
+        let yourCartJsonString = '';
+        let yourCart = [];
+        let checkCart = sessionStorage.getItem("cart");
+        let tokenCustomer = localStorage.getItem('tokenCustomer');
+        if(tokenCustomer == null){
+            tokenCustomer = '';
+        }
+        let dataUser = {
+            name: $("#f-name").val() + " " + $("#l-name").val(),
+            address: $("#address").val() + $("#city").val(),
+            phone: $("#phone").val(),
+            email: $("#email").val(),
+            country: $("#country").val(),
+            postCode: $("#code").val(),
+            cardName: $("#card-name").val(),
+            cardNumber: $("#card-number").val(),
+            tokenCustomer: tokenCustomer,
+        }
+
+        if (checkCart == null) {
+            sessionStorage.setItem("cart", null);
+        } else {
+            yourCartJsonString = sessionStorage.getItem("cart");
+            yourCart = JSON.parse(yourCartJsonString);
+            console.log(yourCart);
+
+        }
+        //get product info in cart
+        let listProducts = [];
+        for (let i = 0; i < yourCart.length; i++) {
+            let product = {
+                id: yourCart[i]['id'],
+                quantity: yourCart[i]['quantity'],
+                price: yourCart[i]['price'],
+            }
+            listProducts.push(product);
+        }
+
+        let dataProduct = {
+            product: listProducts,
+            total: sessionStorage.getItem('total'),
+        }
+
+        console.log(dataUser);
+        console.log(dataProduct);
+        let data = {
+            dataUser: dataUser,
+            dataProduct: dataProduct,
+        }
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "post",
+            url: "/createBill",
+            data: data,
+            cache: false,
+            success: function (data) {
+                console.log('Request sent !');
+                if (data.status) {
+                    console.log('message: ' + data['message']);
+                    let htmlProductInfo = '';
+                    let htmlCustomerInfo = '';
+
+
+                    htmlCustomerInfo += " <table class=\"table table-hover\" ><tr>\n" +
+                        "                            <td style=\"opacity: 0.4\">Name. </td>\n" +
+                        "                            <td>" + data['customer']['name'] + "</td>\n" +
+                        "                        </tr>\n" +
+                        "                        <tr>\n" +
+                        "                            <td style=\"opacity: 0.4\">Address. </td>\n" +
+                        "                            <td>" + data['customer']['address'] + " " + data['customer']['country'] + "</td>\n" +
+                        "                        </tr>\n" +
+                        "                        <tr>\n" +
+                        "                            <td style=\"opacity: 0.4\">Email. </td>\n" +
+                        "                            <td>" + data['customer']['email'] + "</td>\n" +
+                        "                        </tr>\n" +
+                        "                        <tr>\n" +
+                        "                            <td style=\"opacity: 0.4\">Phone. </td>\n" +
+                        "                            <td>" + data['customer']['phone'] + "</td>\n" +
+                        "                        </tr> <tr>\n" +
+                        "                            <td style=\"opacity: 0.4\">Your code. </td>\n" +
+                        "                            <td>" + data['token'] + "</td>\n" +
+                        "                        </tr>   <tr>\n" +
+                        "                         <td>.</td><td><span style=\"width: 100%\" class=\"label label-danger\">This is your code use to check your order. Please check email to get code!!! Thanks</span></td>\n" +
+                        "                        </tr>" +
+                        "                            </table>";
+
+                    let count = 1;
+                    for (let i = 0; i < data['listProductInfo'].length; i++) {
+                        htmlProductInfo += "<tr>\n" +
+                            "                            <td>" + count + "</td>\n" +
+                            "                            <td>" + data['listProductInfo'][i]['name'] + "</td>\n" +
+                            "                            <td>" + data['listProductInfo'][i]['price'] + "</td>\n" +
+                            "                            <td>" + data['listProductInfo'][i]['quantity'] + "</td>\n" +
+                            "                        </tr>";
+                        count++;
+                    }
+                    htmlProductInfo += "<tr><td colspan='2'></td><td>Total. </td><td>" + data['bill']['total'] + "</td></tr>";
+
+                    $('#info-customer').html(htmlCustomerInfo);
+                    $('#info-product').html(htmlProductInfo);
+
+
+                    //show order bill
+                    $('.btn-bill').click();
+                    $('.close').click(function () {
+                        alert('You\'ll direct to Home Page. Thanks your purchase');
+                        sessionStorage.clear();
+                        window.location.assign('/home');
+
+                    });
+                    window.onclick = function (event) {
+                        alert('You\'ll direct to Home Page. Thanks your purchase');
+                        sessionStorage.clear();
+                        window.location.assign('/home');
+
+                    }
+
+                }
+
+            },
+            error: function (data) {
+                alert('Request Failed..');
+            }
+        });
+    }
+}

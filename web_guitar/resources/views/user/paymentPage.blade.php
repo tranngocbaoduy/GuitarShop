@@ -60,7 +60,6 @@
                                 </div>
                             </div>
                         </div>
-                        <p id="error-message"></p>
                     </form>
                 </div>
             </div>
@@ -108,8 +107,8 @@
         </div>
     </div>
 
-    <button class="btn btn-success btn-bill"  data-toggle="modal" data-target="#myModal" style="display:none;">Bill</button>
-    <div class="modal fade" id="myModal" role="dialog">
+    <button class="btn btn-success btn-bill"  data-toggle="modal" data-target="#myModalBill" style="display:none;">Bill</button>
+    <div class="modal fade" id="myModalBill" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">

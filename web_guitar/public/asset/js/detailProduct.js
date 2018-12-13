@@ -1,82 +1,92 @@
-function formatPath(image){
+function formatPath(image) {
     let formatPathImage = '';
-    for(let i= image.length -1 ;i>=0;i--){
-        if(image[i] !=='\\') {
+    for (let i = image.length - 1; i >= 0; i--) {
+        if (image[i] !== '\\') {
             formatPathImage += image[i];
             continue;
         }
         break;
     }
     image = '';
-    for(let i= formatPathImage.length -1 ;i>=0;i--){
+    for (let i = formatPathImage.length - 1; i >= 0; i--) {
         image += formatPathImage[i];
     }
     return image;
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     // load category
     $.ajax({
         type: "get",
         url: "/getAllCategory",
         cache: false,
-        success: function (data)
-        {
+        success: function (data) {
             console.log('get request sent !');
             console.log('message: ' + data.message);
-            if(data.status) {
-                if(data.status){
+            if (data.status) {
+                if (data.status) {
                     let html = ' <option value="0">Choose ...</option>';
 
-                    for(let i =0; i < data.categories.length ; i++){
+                    for (let i = 0; i < data.categories.length; i++) {
                         html += ' <option value="';
-                        html +=  data.categories[i].id ;
+                        html += data.categories[i].id;
                         html += '">';
                         html += data.categories[i].name;
-                        html +='</option>';
+                        html += '</option>';
                     }
                     $('.load-cate').html(html);
-                    if($('#get-choose-cate').val()>=0){
+                    if ($('#get-choose-cate').val() >= 0) {
                         $('.load-cate').val($('#get-choose-cate').val());
                     }
                 }
             }
 
         },
-        error: function (data){
+        error: function (data) {
             alert('Fail to run load Category..');
         }
+    });
+    let data = {
+        id: $('#id-product').val(),
+        quantity: $('#quantity-product').val(),
+        name: $('#name-product').val(),
+        price: parseFloat($('#price-product').val()),
+        description: $('#des-product').val(),
+
+    }
+    $("#btn-update").click(function () {
+        update(data);
     });
 
     //function show image upload
     $('#upload-file').change(function () {
-       console.log($(this));
+        console.log($(this));
         var input = document.getElementById("upload-file");
         var fReader = new FileReader();
         fReader.readAsDataURL(input.files[0]);
-        fReader.onloadend = function(event){
+        fReader.onloadend = function (event) {
             var img = document.getElementById("yourImgTag");
             img.src = event.target.result;
         }
 
     });
 
-    $('#name-product').keyup(function(){
+    $('#name-product').keyup(function () {
         $('.message-error').html('');
     });
-    $('#price-product').keyup(function(){
+    $('#price-product').keyup(function () {
         $('.message-error').html('');
     });
-    $('#image-product').click(function(){
+    $('#image-product').click(function () {
         $('.message-error').html('');
     });
 
     //khi thực hiện kích vào nút Login
 
-    $('#create-new-product').click(function(e){
-        var token    = $("input[name=_token]").val();
-        var name    = $("input[name=name-product]").val();
+    $('#create-new-product').click(function (e) {
+        var token = $("input[name=_token]").val();
+        var name = $("input[name=name-product]").val();
         var price = $("input[name=price-product]").val();
         var des = $("input[name=des-product]").val();
         var image = $("input[name=image-product]").val();
@@ -86,23 +96,23 @@ $(document).ready(function() {
 
 
         // check data
-        if(name==''){
+        if (name == '') {
             $('.message-error').html("  <td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">Invalid Name</p></td>");
             $('#name-product').focus();
             return false;
-        }else if(price ==''){
+        } else if (price == '') {
             $('.message-error').html("  <td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">Invalid Price</p></td>");
             $('#price-product').focus();
             return false;
-        }else if(quantity ==''){
+        } else if (quantity == '') {
             $('.message-error').html("  <td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">Invalid Quantity</p></td>");
             $('#quantity-product').focus();
             return false;
-        }else if(cate ==0){
+        } else if (cate == 0) {
             $('.message-error').html("  <td></td>\\n'<td><p class=\\\"alert alert-warning\\\" style=\\\"width: 50%;float:right\\\">Choose Category</p></td>");
             $('.load-cate').focus();
             return false;
-        }else if(image == ''){
+        } else if (image == '') {
             $('.message-error').html("  <td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">Invalid Image</p></td>");
             return false;
         }
@@ -115,19 +125,19 @@ $(document).ready(function() {
             }
         });
         var data = {
-            _token:token,
-            nameProduct:name,
-            priceProduct:price,
-            descriptionProduct:des,
-            imageProduct:image,
-            quantityProduct:quantity,
-            cateProduct:cate
+            _token: token,
+            nameProduct: name,
+            priceProduct: price,
+            descriptionProduct: des,
+            imageProduct: image,
+            quantityProduct: quantity,
+            cateProduct: cate
         };
         // Ajax Post
 
-            // var formData = $(this).serialize();
+        // var formData = $(this).serialize();
 
-            var formData = new FormData($("#my-form-upload")[0]);
+        var formData = new FormData($("#my-form-upload")[0]);
 
 
         $.ajax({
@@ -135,19 +145,18 @@ $(document).ready(function() {
             url: "/createProduct",
             data: data,
             cache: false,
-            success: function (data)
-            {
+            success: function (data) {
                 console.log('login request sent !');
                 console.log('message: ' + data.message);
 
-                if(data.status) {
+                if (data.status) {
 
-                }else{
-                    $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">"+data.message+"</p></td>");
+                } else {
+                    $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">" + data.message + "</p></td>");
                     $('#name-product').focus();
                 }
             },
-            error: function (data){
+            error: function (data) {
                 alert('Fail to run create..');
                 console.log(data);
             }
@@ -187,3 +196,75 @@ $(document).ready(function() {
     });
 
 });
+
+function update(data) {
+
+
+    console.log(data);
+    let checkOption = confirm('Update product !!!');
+
+    if ($("#name-product").val() != data.name || $("#price-product").val() != data.price || $("#quantity-product").val() != data.quantity || $("#des-product").val() != data.description) {
+        alert('change');
+
+        let newData = {
+            id: $('#id-product').val(),
+            quantity: $('#quantity-product').val(),
+            name: $('#name-product').val(),
+            price: parseFloat($('#price-product').val()),
+            description: $('#des-product').val(),
+        };
+
+        if ($("#name-product").val() == '') {
+            newData.name = data.name;
+        }
+
+        if ($("#price-product").val() == '') {
+            newData.price = data.price;
+        }
+
+        if ($("#quantity-product").val() == '') {
+            newData.quantity = data.quantity;
+        }
+
+        if ($("#des-product").val() == '') {
+            newData.description = data.description;
+        }
+
+
+        console.log(newData);
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "post",
+            url: "/updateProductById",
+            data: newData,
+            cache: false,
+            success: function (data) {
+                console.log('message: ' +data['message']);
+                if(data['status']){
+                    $('.message-error').html("<td></td><td><p class=\"alert alert-success\" style=\"width: 50%;float:right\">Update Product Success</p></td>");
+                    $("#name-product").val(data['product']['name']);
+                    $("#price-product").val(data['product']['price']);
+                    $("#quantity-product").val(data['product']['quantity']);
+                    $("#des-product").val(data['product']['description']);
+
+                }
+            },
+            error: function (data) {
+                alert('Fail to run load..');
+
+
+            }
+        });
+    }
+
+
+    $('#price-product').keyup(function () {
+        $('.message-error').html('');
+    });
+    $('#image-product').click(function () {
+        $('.message-error').html('');
+    });
+}

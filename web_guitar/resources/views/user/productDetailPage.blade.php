@@ -9,7 +9,7 @@
                     <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1">
                         <img src="asset/images/common/line.png" class="line-decoration" alt="">
                     </div>
-                    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12" id="cate-product">
+                    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 cate-product">
                         <!--                        Category of product will be here-->
                     </div>
                     <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1">
@@ -48,30 +48,32 @@
         </div>
 
         {{--section 2--}}
-        <div class="row is-flex" style="box-sizing: border-box;text-align: center">
+        <div class="row is-flex" style="box-sizing: border-box;text-align: center;">
             <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">
                 <img src="asset/images/common/line.png" alt="" class="line-decoration">
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10">
-                <h1 class="unit"><b>BEST SELLER</b></h1>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-10 cate-product-more" >
+                <!--                        Category of product will be here-->
             </div>
             <div class="col-lg-4 col-md-3 col-sm-3 col-xs-1">
                 <img src="asset/images/common/line.png" alt="" class="line-decoration">
             </div>
         </div>
-        <div class="row is-flex list-product" id="best-seller">
+        <div class="row is-flex list-product" id="product-same-category-more">
             <!--            Product is be here-->
-            {{--@foreach($products as $product)--}}
-                {{--<div class="col-lg-3 col-md-6 col-sm-6 product">--}}
-                    {{--<img src="admin/uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">--}}
-                    {{--<h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>--}}
-                {{--</div>--}}
-            {{--@endforeach--}}
+            <input type="hidden" value="{{$productSameCategory[0]->id_category}}" id="hold-id-cate">
+            <input type="hidden" value="4" id="hold-skip-product">
+            @foreach($productSameCategory as $product)
+                <div class="col-lg-3 col-md-6 col-sm-6 product" id="{{$product->id}}">
+                    <img src="uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
+                    <h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>
+                </div>
+            @endforeach
         </div>
-        <div class="row is-flex" style="margin-top: 20px;text-align: center">
+        <div class="row is-flex" style="margin: 40px 0;text-align: center">
             <div class="col-lg-4 col-sm-3 col-xs-3"></div>
             <div class="col-lg-4 col-sm-6 col-xs-6">
-                <button type="button" class="btn btn-default btn-more" id="btn-more-2">MORE</button>
+                <button type="button" class="btn btn-default btn-more" id="btn-more-product">MORE</button>
             </div>
             <div class="col-lg-4 col-sm-3 col-xs-3"></div>
         </div>

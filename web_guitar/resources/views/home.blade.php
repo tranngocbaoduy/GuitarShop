@@ -14,8 +14,8 @@
                 <img src="asset/images/common/line.png" alt="" class="line-decoration">
             </div>
         </div>
-        <input type="hidden" value="0" id="hold-id-cate">
-        <input type="hidden" value="4" id="hold-skip-product">
+        <input type="hidden" value="0" id="hold-id-cate-1">
+        <input type="hidden" value="4" id="hold-skip-product-1">
         <div class="row is-flex list-product" id="new-product">
             <!--                Product is be here-->
             @foreach($products as $product)
@@ -25,6 +25,7 @@
                 </div>
             @endforeach
         </div>
+        <input type='hidden' class='focus-screen' >
         <div class="row is-flex" style="margin-top: 20px;text-align: center">
             <div class="col-lg-4 col-sm-3 col-xs-3"></div>
             <div class="col-lg-4 col-sm-6 col-xs-6">
@@ -47,10 +48,12 @@
                 <img src="asset/images/common/line.png" alt="" class="line-decoration">
             </div>
         </div>
+        <input type="hidden" value="4" id="hold-skip-product-2">
         <div class="row is-flex list-product" id="best-seller">
             <!--            Product is be here-->
-            @foreach($products as $product)
-                <div class="col-lg-3 col-md-6 col-sm-6 product">
+            @foreach($productBestSells as $product)
+                <div class="col-lg-3 col-md-6 col-sm-6 product" id="{{$product->id}}">
+                    <img src="asset/images/best-seller.png" style="width:18%;position:absolute;top:15px;right:15px;z-index:10;" alt="best-seller">
                     <img src="uploads/{{($product->image)}}"  alt="Avatar" style="width:100%">
                     <h4><b>{{$product->name}}<br>{{$product->price}}</b></h4>
                 </div>

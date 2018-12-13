@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
+use App\Category;
+use App\ProductInfo;
 use Illuminate\Http\Request;
 use App\Product;
 use Freshbitsweb\Laratables\Laratables;
@@ -29,7 +32,25 @@ class ProductController extends Controller
         if (count($products) <= 0) {
             return view('error/404');
         }
-        return view('/home', ['products' => $products]);
+        //get best seller
+        $productBestSellers = Product::orderBy('hottest', 'desc')->take(4)->get();
+
+        return view('/home', ['products' => $products],['productBestSells'=>$productBestSellers]);
+    }
+
+    public function searchAutoComplete(Request $request){
+
+        $term=$request->term;
+        $data=Product::where('name','like','%'.$term.'%')->take(10)->get();
+
+        $result= array();
+        foreach ($data as $item) {
+
+            $result[]=['id'=>$item->id,'name'=>$item->name,'image'=>$item->image];
+
+        }
+
+        return response()->json($result);
     }
 
     public function getProductById(Request $request)
@@ -38,7 +59,10 @@ class ProductController extends Controller
         if (count($product) != 1) {
             return view('error/404');
         }
-        return view('/user/productDetailPage', ['product' => $product[0]]);
+//      get product same kind except this product
+        $productSameCategory = Product::where('id_category',$product[0]->id_category)->where('id','<>',$product[0]->id)->take(4)->get();
+
+        return view('/user/productDetailPage', ['product' => $product[0]],['productSameCategory'=>$productSameCategory]);
     }
 
     public function getProductByIdAjax(Request $request)
@@ -52,11 +76,11 @@ class ProductController extends Controller
             );
             return response()->json($msg);
         }
+
         $msg = array(
             'status' => true,
             'message' => 'Get Product By Id Success',
-            'info'=> $request->id,
-            'product' => $products[0]
+            'product' => $products[0],
         );
         return response()->json($msg);
     }
@@ -95,11 +119,14 @@ class ProductController extends Controller
         return view('/admin/detailProduct', ['product' => $product[0]]);
     }
 
-    public function getProductByCategory(Request $request)
+    public function getProductByIdCategory(Request $request)
     {
         $idCate = $request->id;
+        //get best seller
+        $productBestSellers = Product::orderBy('hottest', 'desc')->take(4)->get();
         if($idCate !=0) {
-            $products = Product::where('id_category', $idCate)->take(3)->get();
+            $products = Product::where('id_category', $idCate)->take(9)->get();
+            $cate = Category::where('id',$idCate)->get();
         }else{
             $products = Product::all();
             $msg = array(
@@ -116,8 +143,96 @@ class ProductController extends Controller
             );
             return view('error/404');
         }
-        return view('/user/product', ['products' => $products],['idCate'=>$idCate]);
+        $sum = [$products,$productBestSellers];
+
+        return view('/user/product', ['sum' => $sum],['category'=>$cate[0]]);
 //
+    }
+
+    public function getProductByIdBrand(Request $request)
+    {
+        $idBrand = $request->id;
+        //get best seller
+        $productBestSellers = Product::orderBy('hottest', 'desc')->take(4)->get();
+        if($idBrand !=0) {
+            $products = Product::where('id_brand', $idBrand)->take(9)->get();
+            $brands = Brand::where('id',$idBrand)->get();
+        }else{
+            $products = Product::all();
+            $msg = array(
+                'status' => true,
+                'message' => 'Get Product By Category Success',
+                'products' => $products
+            );
+            return response()->json($msg);
+        }
+        if (count($products) < 0) {
+            $msg = array(
+                'status' => false,
+                'message' => 'Get Product By Category Failed'
+            );
+            return view('error/404');
+        }
+        $sum = [$products,$productBestSellers];
+
+        return view('/user/product', ['sum' => $sum],['category'=>$brands[0]]);
+//
+    }
+
+    public function getBestSellerMore(Request $request){
+
+        $numberSkip = $request->numberSkip;
+        $whatPage = $request->whatPage;
+        $numberTake = 0;
+        if($whatPage == 'Product'){
+            $numberTake = 3;
+        }else if($whatPage == 'Home'){
+            $numberTake = 4;
+        }
+        $products = Product::orderBy('hottest', 'desc')->skip($numberSkip)->take($numberTake)->get();
+
+        if($whatPage == 'Product'){
+            $numberSkip += 3;
+        }else if($whatPage == 'Home'){
+            $numberSkip += 4;
+        }
+
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Product By Category Successful',
+            'products' => $products,
+            'numberSkip'=> $numberSkip,
+        );
+        return response()->json($msg);
+
+    }
+
+    public function getProductSameCategoryMore(Request $request){
+        $idCate = $request->id;
+        $numberSkip = $request->numberSkip;
+        $whatPage = $request->whatPage;
+        $numberTake = 0;
+        if($whatPage == 'Product'){
+            $numberTake = 3;
+        }else if($whatPage == 'Home'){
+            $numberTake = 4;
+        }
+        $products = Product::where('id_category',$idCate)->skip($numberSkip)->take($numberTake)->get();
+
+        if($whatPage == 'Product'){
+            $numberSkip += 3;
+        }else if($whatPage == 'Home'){
+            $numberSkip += 4;
+        }
+
+        $msg = array(
+            'status' => true,
+            'message' => 'Get Product By Category Successful',
+            'products' => $products,
+            'numberSkip'=> $numberSkip,
+        );
+        return response()->json($msg);
+
     }
 
     public function getProductByCategoryMore(Request $request)
@@ -225,7 +340,7 @@ class ProductController extends Controller
 
         $product->save();
         // create button edit
-        $product->action =  "<a class=\"btn btn-warning edit-product\" href=\"/admin/adjust-product-id=".$product->id."\">Edit</a>";
+        $product->action =  "<a class=\"btn btn-warning edit-product\" href=\"/adjust-product-id=".$product->id."\">Edit</a>";
 
         $product->save();
 
@@ -248,9 +363,27 @@ class ProductController extends Controller
     public function updateProductById(Request $request)
     {
 
+        $product = Product::where('id', $request->id)->get();
+        if (count($product) != 1) {
+            $msg = array(
+                'status' => false,
+                'message' => 'Update Failed',
+            );
+
+            return response()->json($msg);
+        }
+
+        $product[0]->name = $request->name;
+        $product[0]->price = floatval($request->price);
+        $product[0]->description = $request->description;
+        $product[0]->quantity = $request->quantity;
+        $product[0]->save();
+
         $msg = array(
             'status' => true,
-            'message' => 'Create Successful',
+            'message' => 'Update Successful',
+            'product' => $product[0],
+            'check' => is_float(floatval($request->price))
         );
 
         return response()->json($msg);

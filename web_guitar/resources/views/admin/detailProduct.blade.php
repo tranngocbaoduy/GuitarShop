@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@extends('layouts.navigation_bar')
 
 @section('content')
     <div class="container">
@@ -17,31 +18,46 @@
                                     @if(isset($product))
                                         <tr>
                                             <td style="width:20%">No.</td>
-                                            <td><input style="width:50%" type="text" value="{{$product->id}}" readonly="true"></td>
+                                            <td><input style="width:50%" type="text" id="id-product"
+                                                       value="{{$product->id}}" readonly="true"></td>
+                                        </tr>
+                                        <tr>
+
                                         </tr>
                                         <tr>
                                             <td style="width:20%">Name.</td>
-                                            <td><input style="width:50%" type="text" name="name-product" id="name-product" value="{{$product->name}}" ></td>
+                                            <td class="message-error-name">
+                                                <input style="width:50%" type="text" name="name-product"
+                                                       id="name-product" value="{{$product->name}}"></td>
                                         </tr>
                                         <tr>
                                             <td style="width:20%">Price.</td>
-                                            <td><input style="width:50%" name="price-product" id="price-product"  type="text" value="{{$product->price}}" placeholder="$" ></td>
+                                            <td class="message-error-price">
+                                                <input style="width:50%" name="price-product" id="price-product"
+                                                       type="text" value="{{$product->price}}" placeholder="$"></td>
                                         </tr>
                                         <tr>
                                             <td style="width:10%">Quantity.</td>
-                                            <td><input style="width:50%" name="quantity-product" id="quantity-product"  type="text" value="{{$product->quantity}}" ></td>
+                                            <td class="message-error-quantity">
+                                                <input style="width:50%" name="quantity-product" id="quantity-product"
+                                                       type="text" value="{{$product->quantity}}"></td>
                                         </tr>
                                         <tr>
-                                            <td >Category.</td>
+                                            <td>Category.</td>
                                             <td>
-                                                <input type="hidden" id="get-choose-cate" value="{{$product->id_category}}">
-                                                <select  style="width:50%" class="load-cate" disabled="true">
+                                                <input type="hidden" id="get-choose-cate"
+                                                       value="{{$product->id_category}}">
+                                                <select style="width:50%" class="load-cate" disabled="true">
                                                 </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width:10%">Description.</td>
-                                            <td><textarea name="des-product" id="des-product" style="width:50%" type="text" value="" style="border: 1px white;">{{$product->description}}</textarea></td>
+                                            <td class="message-error-des">
+                                                <textarea name="des-product" id="des-product" style="width:50%"
+                                                          type="text" value=""
+                                                          style="border: 1px white;">{{$product->description}}</textarea>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td style="width:10%">Image.</td>
@@ -51,9 +67,12 @@
                                                 </button>
                                             </td>
                                         </tr>
+                                        <tr class="message-error">
+                                        </tr>
                                         <tr>
                                             <td></td>
-                                            <td><a href="/admin/update-product-id={{$product->id}}" onclick="return confirm('Update product !!!')" class="btn btn-success">Accept</a>
+
+                                            <td><a id="btn-update"  class="btn btn-success">Accept</a>
                                                 <a href="/admin/viewAllProduct" class="btn btn-info btn-warning">Back</a>
                                                 <a href="/admin/remove-product-id={{$product->id}}"
                                                    onclick="return confirm('Delete product !!!')"

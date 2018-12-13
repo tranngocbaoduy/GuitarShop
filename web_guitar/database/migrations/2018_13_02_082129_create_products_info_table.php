@@ -16,8 +16,10 @@ class CreateProductsInfoTable extends Migration
         Schema::dropIfExists('products_info');
         Schema::create('products_info', function (Blueprint $table) {
             $table->bigInteger('id')->autoIncrement();
+            $table->bigInteger('id_product');
             $table->string('name');
             $table->integer('quantity');
+            $table->string('image');
             $table->float('price');
             $table->bigInteger('id_bill');
             $table->timestamps();

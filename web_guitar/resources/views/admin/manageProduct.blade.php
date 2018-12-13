@@ -60,7 +60,6 @@
                     {name: 'quantity'},
                     {name: 'created_at'},
                     {name: 'action', orderable: false, searchable: false},
-
                 ]
             });
         });

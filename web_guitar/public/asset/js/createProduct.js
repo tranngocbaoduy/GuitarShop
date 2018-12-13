@@ -147,8 +147,8 @@ $(document).ready(function() {
                         currentTimeCreated: data['currentTimeCreated']
                     };
 
-                    $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">" + data.message + "</p></td>");
-                    $('.message-error').focus();
+                    // $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">" + data.message + "</p></td>");
+                    // $('.message-error').focus();
 
                     $.ajax({
                         type: "post",
@@ -161,9 +161,10 @@ $(document).ready(function() {
                             console.log('message: ' + response.message);
 
                             if(response.status) {
+                                $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-success\" style=\"width: 50%;float:right\">"+response.message+"</p></td>");
                                 // window.location.assign('/admin/viewAllProduct');
                             }else{
-                                $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">"+data.message+"</p></td>");
+                                $('.message-error').html("<td></td>\n'<td><p class=\"alert alert-warning\" style=\"width: 50%;float:right\">"+response.message+"</p></td>");
                                 $('#name-product').focus();
                             }
                         },

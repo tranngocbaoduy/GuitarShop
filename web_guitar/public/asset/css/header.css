@@ -1,15 +1,30 @@
 /*header*/
 .navbar-header {
     padding-left: 25px;
-    padding-top: 10px;
+    padding-top: 3px;
 }
 
 .navigation {
-    margin-left: 60px;
+    margin-left: 35px;
     margin-top: 5px;
     margin-bottom: 5px;
 
 }
+
+/*.navbar-input-group {*/
+/*font-size: 0px; !*removes whitespace between button and input*!*/
+/*}*/
+
+/*.navbar-input-group input {*/
+/*border-top-right-radius: 0px;*/
+/*border-bottom-right-radius: 0px;*/
+/*}*/
+
+/*.navbar-input-group .btn {*/
+/*border-top-left-radius: 0px;*/
+/*border-bottom-left-radius: 0px;*/
+/*border-left: 0px;*/
+/*}*/
 
 .navigation-path {
     text-align: left;
@@ -31,14 +46,31 @@ body {
     font-family: Open Sans;
 }
 
-@media (min-width: 1330px) {
-    .input-group {
-        margin-top: 0%;
-        margin-bottom: 10px;
-        width: 30%;
-        margin-right: 10px;
-    }
+.input-group {
+    margin: 2% 0;
+    /*margin-right: 20px;*/
+    width: 100%;
 }
+
+.search-form {
+    margin-top: 0.5%;
+    width: 30%;
+}
+
+#search {
+    background-color: white;
+    color: black;
+    /*border-radius: 15px;*/
+}
+
+/*@media (min-width: 1330px) {*/
+    /*.input-group {*/
+        /*margin-top: 0%;*/
+        /*margin-bottom: 10px;*/
+        /*width: 10%;*/
+        /*margin-right: 10px;*/
+    /*}*/
+/*}*/
 
 @media (max-width: 1330px) {
     .input-group {
@@ -56,9 +88,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .navbar-brand {
-        margin-top: 0px;
-    }
 
     .input-group {
         width: 90%;
@@ -110,11 +139,6 @@ body {
     flex-direction: column;
 }
 
-.my-input {
-    margin-top: -50px !important;
-    padding-right: 20px;
-}
-
 /*// Mixin itself*/
 .clearfix {
     display: block;
@@ -124,5 +148,9 @@ body {
 
 /*// Usage as a mixin*/
 .element {
-    @include clearfix;
+@include clearfix;
+}
+
+.product {
+    font-family: Quicksand;
 }
