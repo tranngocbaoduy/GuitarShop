@@ -64,8 +64,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right navigation">
-                {{--<li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-search"></span></a>--}}
-                {{--</li>--}}
+                <li><a class="btn-search" ><span class="glyphicon glyphicon-search"></span></a>
+                </li>
                 <li id="logged" class="dropdown">
 
                 </li>

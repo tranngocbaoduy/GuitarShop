@@ -55,6 +55,7 @@ body {
 .search-form {
     margin-top: 0.5%;
     width: 30%;
+    margin-right: -30px !important;
 }
 
 #search {

@@ -14,24 +14,28 @@
             <div class="col-lg-7 col-lg-8 col-sm-8 col-xs-12">
                 <p>Contact us via any of the following methods during our business hours<br>Monday - Fridat 8:30 AM -
                     5:30 PM Pacific Time<br>Services@gamingzone.com<br>Phone: 1-(626)-854-9338 op. 4</p>
-                <form name="my-login" action="/action_page.php" style="border-radius: 0px;opacity: 0.8;width: 80%;">
+
+                <form name="my-login" style="border-radius: 0px;opacity: 0.8;width: 80%;">
 
                     <div class="form-group">
                         <input type="email" class="form-control" id="email" placeholder="Your email" name="email"
                                style="">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="pwd" placeholder="Your phone" name="pwd">
+                        <input class="form-control" id="phone" placeholder="Your phone" name="phone">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" id="pwd" placeholder="Your message" name="message" rows="5"
+                        <textarea class="form-control" id="message" placeholder="Your message" name="message" rows="5"
                                   cols="20"></textarea>
                     </div>
-                    <p id="message"></p>
-                    <button type="submit" class="btn btn-default" style="color:black;border-radius: 0px;width: 30%">
+                    <div class="alert alert-warning message-error" style="display: none;color:red">
+                    </div>
+                    <button type="button" class="btn btn-default btn-send-email"
+                            style="color:black;border-radius: 0px;width: 30%">
                         SEND
                     </button>
                 </form>
+
 
             </div>
             <div class="col-lg-5 col-lg-4 col-sm-4 col-xs-12">

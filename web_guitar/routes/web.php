@@ -86,9 +86,12 @@ Route::get('/getProductByCategoryMore','ProductController@getProductByCategoryMo
 Route::get('/detail-product-id={id}','ProductController@getProductById');
 //Route::post('/detail-product-id'={},'ProductController@getProductById');
 Route::get('/getProductByIdAjax','ProductController@getProductByIdAjax');
-//
-//
 
+
+//send email
+Route::post('/addFeedback','ContactController@addFeedback');
+//
+//
 
 //upload file
 Route::get('file','FileController@index');

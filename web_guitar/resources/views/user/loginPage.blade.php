@@ -29,15 +29,16 @@
                         </div>
                         <div class="form-group">
                             <div class="alert alert-warning message-error" style="display: none;color:red">
+                            </div>
+                            <button type="button" class="btn btn-default btn-submit">Sign In
+                            </button>
+                            <button type="button" class="btn btn-default btn-create-new-account"><a href="/userSignUp">Create
+                                    New Account</a></button>
+                            {{--<div class="alert alert-warning" style="display: none" id="error-message">--}}
+                                {{--<strong>Warning!</strong> Indicates a warning that might need attention.--}}
+                            {{--</div>--}}
+                            <input type="text" value="0" class="wrong-sign-in" hidden>
                         </div>
-                        <button type="button" class="btn btn-default btn-submit">Sign In
-                        </button>
-                        <button type="button" class="btn btn-default btn-create-new-account"><a href="/userSignUp">Create
-                                New Account</a></button>
-                        <div class="alert alert-warning" style="display: none" id="error-message">
-                            <strong>Warning!</strong> Indicates a warning that might need attention.
-                        </div>
-                        <input type="text" value="0" class="wrong-sign-in" hidden>
                     </form>
                 </div>
                 <div class="row btn-login-with-social-media">

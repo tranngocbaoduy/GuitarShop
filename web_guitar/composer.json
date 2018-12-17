@@ -10,8 +10,9 @@
         "freshbitsweb/laratables": "^1.1",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "startupwrench/laratables": "dev-master",
-        "laravelcollective/html": "~5.0"
+        "laravelcollective/html": "~5.0",
+        "pragmarx/google2fa-laravel": "^0.2.0",
+        "startupwrench/laratables": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
