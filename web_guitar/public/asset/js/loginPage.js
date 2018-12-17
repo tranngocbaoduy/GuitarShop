@@ -20,8 +20,8 @@ if(check != null){
 }
 $('.btn-submit').click(function() {
 
-    if($("#email").val()==''){
-        $('.message-error').html( 'Please enter your name');
+    if (!validateEmail($('#email').val() )) {
+        $('.message-error').html( 'Invalid Email. Format Email : abc@gmail.com');
         $('.message-error').show('slow');
         $('#email').focus();
         return false;

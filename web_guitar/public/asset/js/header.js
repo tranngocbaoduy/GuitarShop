@@ -2,7 +2,15 @@ $(document).ready(function () {
     loadCategory();
     loadBrand();
     checkLogin();
+    $('.btn-search').click(function () {
+        if($('#search-id').val() == ''){
+            return false;
+        }
+        window.location.assign('/detail-product-id=' + $('#search-id').val());
+        return false;
+    });
 
+    
     $('#my-search').submit(function () {
         if($('#search-id').val() == ''){
             return false;
@@ -50,13 +58,11 @@ $(document).ready(function () {
     }).data("ui-autocomplete")._renderItem = function(ul, item) {
 
         let html = '';
-        html+='<table>\n' +
-            '                        <tr>\n' +
-            '                            <td width="50%"><div ">'+item.label+'</span></td>\n' +
-            '                            <td width="50%"><img alt="product"style="width: 30%;" src="uploads/'+item.image+'"></td>\n' +
-            '                        </tr>\n' +
-            '                    </table>';
-        return $("<li style='list-style-type: none;width: 30%'>").data("ui-autocomplete-item", item).append(html).appendTo(ul);
+        html+= '                        <div class="row">\n' +
+            '                            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 item-search" ><div ">'+item.label+'</div></div>\n' +
+            '                            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 item-search" ><img alt="product"style="width: 30px;" src="uploads/'+item.image+'"></td>\n' +
+            '                        </div>';
+        return $("<li style='list-style-type: none'>").data("ui-autocomplete-item", item).append(html).appendTo(ul);
     };
 });
 
@@ -186,5 +192,8 @@ function checkLogin() {
 
     }
 }
-
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
